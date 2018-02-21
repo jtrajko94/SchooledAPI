@@ -27,3 +27,16 @@ C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.csprojResolveAssemblyReference.cache
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.dll
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.pdb
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.Helpers.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.Mvc.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.Razor.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.Helpers.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.Mvc.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.Razor.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.Razor.xml
