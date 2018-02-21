@@ -1,5 +1,4 @@
 ﻿using SchooledAPI.Utilities;
-using System;
 using System.Collections.Generic;
 
 namespace SchooledAPI.Services
