@@ -12,6 +12,9 @@ namespace SchooledAPI.Utilities
 
         public static string StorageAccountConnection = ConfigurationManager.AppSettings["CloudStorage"];
 
+        //TODO: Set schooled database connection
+        public static string SchooledDatabaseConnection = ConfigurationManager.AppSettings["SchooledDb"];
+
         public static string MainHost = "Schooled";
 
         public static string EmailFromAddress = "";
