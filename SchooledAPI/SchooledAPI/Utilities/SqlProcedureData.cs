@@ -5,6 +5,7 @@
         public enum Procedures
         {
             //TODO: ADD procedures here
+            Test
         }
     }
 }

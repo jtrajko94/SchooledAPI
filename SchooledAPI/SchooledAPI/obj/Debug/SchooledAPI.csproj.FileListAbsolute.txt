@@ -40,3 +40,12 @@ C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.xml
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.Deployment.xml
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Dapper.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.ServiceBus.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Dapper.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.xml
+C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.ServiceBus.xml
