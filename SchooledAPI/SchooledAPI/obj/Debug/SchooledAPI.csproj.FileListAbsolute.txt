@@ -1,4 +1,3 @@
-C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\ApplicationInsights.config
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\roslyn\csc.exe
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
