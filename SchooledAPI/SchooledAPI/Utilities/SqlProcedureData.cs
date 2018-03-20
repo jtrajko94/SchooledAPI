@@ -4,8 +4,11 @@
     {
         public enum Procedures
         {
-            //TODO: ADD procedures here
-            Test
+            //USERS
+            GetUserById,
+            GetUserByLogin,
+            MergeUser,
+            DeleteUser
         }
     }
 }

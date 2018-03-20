@@ -9,7 +9,15 @@ namespace SchooledAPI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute("PostTest", "ws/test", new { controller = "User", action = "TestPost" });
+
+            //USERS
+            routes.MapRoute("GetUserById", "user/GetUserById", new { controller = "User", action = "GetUserById" });
+            routes.MapRoute("GetUserByLogin", "user/GetUserByLogin", new { controller = "User", action = "GetUserByLogin" });
+            routes.MapRoute("DeleteUser", "user/DeleteUser", new { controller = "Users", action = "DeleteUser" });
+            routes.MapRoute("MergeUser", "user/MergeUser", new { controller = "Users", action = "MergeUser" });
+
+            //ADMINUSERS
+
         }
 
         protected void Application_Start()
