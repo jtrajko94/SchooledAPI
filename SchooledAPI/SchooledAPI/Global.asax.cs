@@ -17,6 +17,10 @@ namespace SchooledAPI
             routes.MapRoute("MergeUser", "user/MergeUser", new { controller = "Users", action = "MergeUser" });
 
             //ADMINUSERS
+            routes.MapRoute("GetAdminUserById", "user/GetAdminUserById", new { controller = "AdminUser", action = "GetAdminUserById" });
+            routes.MapRoute("GetAdminUserByLogin", "user/GetdminUserByLogin", new { controller = "AdminUser", action = "GetAdminUserByLogin" });
+            routes.MapRoute("DeleteAdminUser", "user/DeleteAdminUser", new { controller = "AdminUsers", action = "DeleteAdminUser" });
+            routes.MapRoute("MergeAdminUser", "user/MergeAdminUser", new { controller = "AdminUsers", action = "MergeAdminUser" });
 
         }
 

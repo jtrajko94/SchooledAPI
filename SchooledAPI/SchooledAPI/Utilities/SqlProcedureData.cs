@@ -8,7 +8,13 @@
             GetUserById,
             GetUserByLogin,
             MergeUser,
-            DeleteUser
+            DeleteUser,
+
+            //ADMINUSERS
+            GetAdminUserById,
+            GetAdminUserByLogin,
+            MergeAdminUser,
+            DeleteAdminUser,
         }
     }
 }
