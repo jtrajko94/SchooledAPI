@@ -85,7 +85,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            UserId = user.AdminUserId,
+                            UserId = user.AdminUserRowKey,
                             Email = user.Email,
                             Password = user.Password,
                             FirstName = user.FirstName,

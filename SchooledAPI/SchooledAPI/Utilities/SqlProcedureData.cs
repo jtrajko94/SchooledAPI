@@ -26,6 +26,13 @@
             MergeCourse,
             DeleteCourse,
             GetSubjectCourses,
+
+            //QUESTIONS
+            GetQuestion,
+            MergeQuestion,
+            DeleteQuestion,
+            GetCourseQuestions,
+            GetCollectionQuestions
         }
     }
 }

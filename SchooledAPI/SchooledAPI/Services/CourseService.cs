@@ -11,7 +11,7 @@ namespace SchooledAPI.Services
             List<string> errors = new List<string>();
             bool isValid = true;
 
-            if (!Validator.Item(ValidatorType.Integer, course.SubjectId.ToString()))
+            if (!Validator.Item(ValidatorType.AnyValue, course.SubjectRowKey))
             {
                 isValid = false;
                 errors.Add("Subject Id is required.");

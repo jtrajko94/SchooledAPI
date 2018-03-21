@@ -25,13 +25,20 @@ namespace SchooledAPI
             //SUBJECTS
             routes.MapRoute("GetSubject", "subject/getsubject", new { controller = "Subject", action = "GetSubject" });
             routes.MapRoute("DeleteSubject", "subject/deletesubject", new { controller = "Subject", action = "DeleteSubject" });
-            routes.MapRoute("MergeUser", "subject/mergeuser", new { controller = "Subject", action = "MergeSubject" });
+            routes.MapRoute("MergeSubject", "subject/mergesubject", new { controller = "Subject", action = "MergeSubject" });
 
             //COURSES
             routes.MapRoute("GetCourse", "course/getcourse", new { controller = "Course", action = "GetCourse" });
             routes.MapRoute("DeleteCourse", "course/deletecourse", new { controller = "Course", action = "DeleteCourse" });
             routes.MapRoute("MergeCourse", "course/mergecourse", new { controller = "Course", action = "MergeCourse" });
             routes.MapRoute("GetSubjectCourses", "course/getsubjectcourses", new { controller = "Course", action = "GetSubjectCourses" });
+
+            //QUESTIONS
+            routes.MapRoute("GetQuestions", "question/getquestion", new { controller = "Question", action = "GetQuestion" });
+            routes.MapRoute("DeleteQuestions", "question/deletequestion", new { controller = "Question", action = "DeleteQuestion" });
+            routes.MapRoute("MergeQuestions", "question/mergequestion", new { controller = "Question", action = "MergeQuestion" });
+            routes.MapRoute("GetCourseQuestions", "question/getcoursequestions", new { controller = "Question", action = "GetCourseQuestions" });
+            routes.MapRoute("GetCollectionQuestions", "question/getcollectionquestions", new { controller = "Question", action = "GetCollectionQuestions" });
         }
 
         protected void Application_Start()

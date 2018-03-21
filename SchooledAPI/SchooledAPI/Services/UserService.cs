@@ -10,13 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
-            if (!Validator.Item(ValidatorType.Integer, user.UserTypeId.ToString()))
+            if (!Validator.Item(ValidatorType.AnyValue, user.UserTypeId))
             {
                 isValid = false;
                 errors.Add("User Type ID is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, user.SchoolId.ToString()))
+            if (!Validator.Item(ValidatorType.AnyValue, user.SchoolId))
             {
                 isValid = false;
                 errors.Add("School ID is required.");

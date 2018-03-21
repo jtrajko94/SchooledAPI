@@ -66,10 +66,10 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            CourseId = course.CourseId,
+                            CourseId = course.CourseRowKey,
                             Name = course.Name,
                             Image = course.Image,
-                            SubjectId = course.SubjectId
+                            SubjectId = course.SubjectRowKey
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeCourse, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -92,14 +92,21 @@ namespace SchooledAPI.Controllers
         {
             try
             {
-                using (var sql = new SqlData.Records<CourseData>())
+                if (subjectId != null)
                 {
-                    var parameters = new
+                    using (var sql = new SqlData.Records<CourseData>())
                     {
-                        SubjectId = subjectId
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSubjectCourses, parameters);
-                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        var parameters = new
+                        {
+                            SubjectId = subjectId
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSubjectCourses, parameters);
+                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                    }
+                }
+                else
+                {
+                    return new APIResponseData { status = "Failed", description = "Please provide a Subject Id." };
                 }
             }
             catch (Exception err)

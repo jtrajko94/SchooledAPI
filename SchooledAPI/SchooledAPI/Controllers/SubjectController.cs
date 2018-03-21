@@ -63,7 +63,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            SubjectId = subject.SubjectId,
+                            SubjectId = subject.SubjectRowKey,
                             Name = subject.Name,
                             Image = subject.Image
                         };
