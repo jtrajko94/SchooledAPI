@@ -138,6 +138,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\AdminUserData.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Data\APIValidatorResponse.cs" />
     <Compile Include="Data\CourseData.cs" />
     <Compile Include="Data\QuestionData.cs" />
+    <Compile Include="Data\ResponseData.cs" />
     <Compile Include="Data\SubjectData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Global.asax.cs">
@@ -154,6 +156,7 @@
     <Compile Include="Services\AdminUserService.cs" />
     <Compile Include="Services\CourseService.cs" />
     <Compile Include="Services\QuestionService.cs" />
+    <Compile Include="Services\ResponseService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Utilities\Email.cs" />
@@ -176,8 +179,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Course\" />
-    <Folder Include="Views\Question\" />
+    <Folder Include="Views\Response\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -36,9 +36,14 @@ namespace SchooledAPI
             //QUESTIONS
             routes.MapRoute("GetQuestions", "question/getquestion", new { controller = "Question", action = "GetQuestion" });
             routes.MapRoute("DeleteQuestions", "question/deletequestion", new { controller = "Question", action = "DeleteQuestion" });
-            routes.MapRoute("MergeQuestions", "question/mergequestion", new { controller = "Question", action = "MergeQuestion" });
-            routes.MapRoute("GetCourseQuestions", "question/getcoursequestions", new { controller = "Question", action = "GetCourseQuestions" });
+            routes.MapRoute("MergeQuestion", "question/mergequestion", new { controller = "Question", action = "MergeQuestion" });
+            routes.MapRoute("GetCourseQuestion", "question/getcoursequestions", new { controller = "Question", action = "GetCourseQuestions" });
             routes.MapRoute("GetCollectionQuestions", "question/getcollectionquestions", new { controller = "Question", action = "GetCollectionQuestions" });
+
+            //RESPONSES
+            routes.MapRoute("GetResponse", "response/getresponse", new { controller = "Response", action = "GetResponse" });
+            routes.MapRoute("MergeResponse", "response/mergequestion", new { controller = "Response", action = "MergeResponse" });
+            routes.MapRoute("GetQuestionResponses", "response/getquestionresponses", new { controller = "Response", action = "GetQuestionResponses" });
         }
 
         protected void Application_Start()

@@ -32,7 +32,12 @@
             MergeQuestion,
             DeleteQuestion,
             GetCourseQuestions,
-            GetCollectionQuestions
+            GetCollectionQuestions,
+
+            //RESPONSE
+            GetResponse,
+            MergeResponse,
+            GetQuestionResponses,
         }
     }
 }

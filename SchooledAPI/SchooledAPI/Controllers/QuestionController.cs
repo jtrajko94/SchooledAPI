@@ -14,14 +14,20 @@ namespace SchooledAPI.Controllers
         {
             try
             {
-                using (var sql = new SqlData.Records<CourseData>())
+                if(id != null)
                 {
-                    var parameters = new
+                    using (var sql = new SqlData.Records<CourseData>())
                     {
-                        QuestionId = id
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetQuestion, parameters);
-                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        var parameters = new
+                        {
+                            QuestionId = id
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetQuestion, parameters);
+                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                    }
+                }else
+                {
+                    return new APIResponseData { status = "Failed", description = "A Question ID is required." };
                 }
             }
             catch (Exception err)
