@@ -5,16 +5,21 @@
         public enum Procedures
         {
             //USERS
-            GetUserById,
+            GetUser,
             GetUserByLogin,
             MergeUser,
             DeleteUser,
 
             //ADMINUSERS
-            GetAdminUserById,
+            GetAdminUser,
             GetAdminUserByLogin,
             MergeAdminUser,
             DeleteAdminUser,
+
+            //SUBJECTS
+            GetSubject,
+            MergeSubject,
+            DeleteSubject,
         }
     }
 }

@@ -3,14 +3,11 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchooledAPI.Controllers
 {
-    public class AdminUsersController : Controller
+    public class AdminUserController : Controller
     {
         [HttpGet]
         public static APIResponseData GetAdminUserById(int id)
@@ -23,7 +20,7 @@ namespace SchooledAPI.Controllers
                     {
                         AdminUserId = id
                     };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetAdminUserById, parameters);
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetAdminUser, parameters);
                     return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                 }
             }

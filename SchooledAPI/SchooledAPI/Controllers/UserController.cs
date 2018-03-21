@@ -10,7 +10,7 @@ namespace SchooledAPI.Controllers
     public class UserController : Controller
     {
         [HttpGet]
-        public static APIResponseData GetUserById(int id)
+        public static APIResponseData GetUserById(int? id = null)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace SchooledAPI.Controllers
                     {
                         UserId = id
                     };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetUserById, parameters);
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetUser, parameters);
                     return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                 }
             }

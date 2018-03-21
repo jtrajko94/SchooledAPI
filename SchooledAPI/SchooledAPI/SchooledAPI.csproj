@@ -135,7 +135,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminUsersController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Data\AdminUserData.cs" />
     <Compile Include="Data\APIResponseData.cs" />
     <Compile Include="Data\APIValidatorResponse.cs" />
     <Compile Include="Data\UserData.cs" />
@@ -143,6 +146,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminUserService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Utilities\Email.cs" />
     <Compile Include="Utilities\EmailMessage.cs" />
@@ -152,6 +156,7 @@
     <Compile Include="Utilities\SqlData.cs" />
     <Compile Include="Utilities\SqlProcedureData.cs" />
     <Compile Include="Utilities\TextMethods.cs" />
+    <Compile Include="Utilities\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -162,7 +167,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Subjects\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -30,31 +30,31 @@ namespace SchooledAPI.Utilities
 
             switch (type)
             {
-                case Type.ZipUS:
+                case ValidatorType.ZipUS:
                     return ZipUS(value);
-                case Type.ZipCanada:
+                case ValidatorType.ZipCanada:
                     return ZipCanada(value);
-                case Type.Password:
+                case ValidatorType.Password:
                     return Password(value);
-                case Type.PhoneUS:
+                case ValidatorType.PhoneUS:
                     return PhoneUS(value);
-                case Type.Date:
+                case ValidatorType.Date:
                     return Date(value);
-                case Type.FutureDate:
+                case ValidatorType.FutureDate:
                     return FutureDate(value);
-                case Type.FirstAndLastName:
+                case ValidatorType.FirstAndLastName:
                     return FirstAndLastName(value);
-                case Type.Email:
+                case ValidatorType.Email:
                     return Email(value);
-                case Type.Double:
+                case ValidatorType.Double:
                     return IsDouble(value);
-                case Type.IP:
+                case ValidatorType.IP:
                     return IsIP(value);
-                case Type.Integer:
+                case ValidatorType.Integer:
                     return IsInteger(value);
-                case Type.AnyValue:
+                case ValidatorType.AnyValue:
                     return !String.IsNullOrEmpty(value);
-                case Type.Blank:
+                case ValidatorType.Blank:
                     return String.IsNullOrEmpty(value);
                 default:
                     return false;

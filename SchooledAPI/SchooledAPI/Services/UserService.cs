@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json;
-using SchooledAPI.Data;
+﻿using SchooledAPI.Data;
 using SchooledAPI.Utilities;
-using System;
 using System.Collections.Generic;
-using System.Web.Http;
 
 namespace SchooledAPI.Services
 {
