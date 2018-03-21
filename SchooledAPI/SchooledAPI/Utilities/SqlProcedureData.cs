@@ -20,6 +20,12 @@
             GetSubject,
             MergeSubject,
             DeleteSubject,
+
+            //COURSES
+            GetCourse,
+            MergeCourse,
+            DeleteCourse,
+            GetSubjectCourses,
         }
     }
 }

@@ -135,18 +135,23 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AdminUsersController.cs" />
-    <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\AdminUserData.cs" />
     <Compile Include="Data\APIResponseData.cs" />
     <Compile Include="Data\APIValidatorResponse.cs" />
+    <Compile Include="Data\CourseData.cs" />
+    <Compile Include="Data\SubjectData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminUserService.cs" />
+    <Compile Include="Services\CourseService.cs" />
+    <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Utilities\Email.cs" />
     <Compile Include="Utilities\EmailMessage.cs" />
@@ -168,7 +173,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Subjects\" />
+    <Folder Include="Views\Course\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
