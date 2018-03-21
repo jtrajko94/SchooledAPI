@@ -18,7 +18,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        SubjectId = id
+                        SubjectRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSubject, parameters);
                     return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -39,7 +39,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        SubjectId = id
+                        SubjectRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteSubject, parameters);
                     return new APIResponseData { status = "Success", description = "Subject with ID: " + id + " has been deleted" };
@@ -63,9 +63,10 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            SubjectId = subject.SubjectRowKey,
+                            SubjectRowKey = subject.SubjectRowKey,
                             Name = subject.Name,
-                            Image = subject.Image
+                            Image = subject.Image,
+                            Timestamp = DateTime.Now
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeSubject, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };

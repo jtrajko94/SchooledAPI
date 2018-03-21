@@ -149,6 +149,7 @@
     <Compile Include="Data\ResponseData.cs" />
     <Compile Include="Data\SubjectData.cs" />
     <Compile Include="Data\UserData.cs" />
+    <Compile Include="Data\UserTypeData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,6 +160,7 @@
     <Compile Include="Services\ResponseService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\UserTypeService.cs" />
     <Compile Include="Utilities\Email.cs" />
     <Compile Include="Utilities\EmailMessage.cs" />
     <Compile Include="Utilities\ErrorMessage.cs" />
@@ -179,7 +181,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Response\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

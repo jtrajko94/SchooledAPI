@@ -18,7 +18,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        UserId = id
+                        UserRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetUser, parameters);
                     return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -61,7 +61,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        UserId = id
+                        UserRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteUser, parameters);
                     return new APIResponseData { status = "Success", description = "User with ID: " + id + " has been deleted" };
@@ -85,9 +85,9 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            UserId = user.UserRowKey,
-                            UserTypeId = user.UserTypeId,
-                            SchoolId = user.SchoolId,
+                            UserRowKey = user.UserRowKey,
+                            UserTypeRowKey = user.UserTypeId,
+                            SchoolRowKey = user.SchoolId,
                             Email = user.Email,
                             Password = user.Password,
                             FirstName = user.FirstName,
@@ -103,6 +103,59 @@ namespace SchooledAPI.Controllers
                         return new APIResponseData { status = "Failed : Validation", description = JsonConvert.SerializeObject(response.Errors) };
                     }
                     
+                }
+            }
+            catch (Exception err)
+            {
+                return new APIResponseData { status = "Failed", description = err.Message };
+            }
+        }
+
+        [HttpGet]
+        public static APIResponseData GetUserType(int? id = null)
+        {
+            try
+            {
+                using (var sql = new SqlData.Record<UserTypeData>())
+                {
+                    var parameters = new
+                    {
+                        UserTypeRowKey = id
+                    };
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetUserType, parameters);
+                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                }
+            }
+            catch (Exception err)
+            {
+                return new APIResponseData { status = "Failed", description = err.Message };
+            }
+        }
+
+        [HttpPost]
+        public static APIResponseData MergeUserType(UserTypeData userType)
+        {
+            try
+            {
+                using (var sql = new SqlData.Record<UserData>())
+                {
+                    APIValidatorResponse response = UserTypeService.IsValid(userType);
+                    if (response.IsValid)
+                    {
+                        var parameters = new
+                        {
+                            UserTypeRowKey = userType.UserTypeRowKey,
+                            Name = userType.Name,
+                            Timestamp = DateTime.Now
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeUserType, parameters);
+                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                    }
+                    else
+                    {
+                        return new APIResponseData { status = "Failed : Validation", description = JsonConvert.SerializeObject(response.Errors) };
+                    }
+
                 }
             }
             catch (Exception err)

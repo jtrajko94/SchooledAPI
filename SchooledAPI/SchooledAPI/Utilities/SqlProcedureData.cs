@@ -9,6 +9,8 @@
             GetUserByLogin,
             MergeUser,
             DeleteUser,
+            GetUserType,
+            MergeUserType,
 
             //ADMINUSERS
             GetAdminUser,

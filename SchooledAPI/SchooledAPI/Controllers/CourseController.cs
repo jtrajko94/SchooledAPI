@@ -21,7 +21,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        CourseId = id
+                        CourseRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCourse, parameters);
                     return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -42,7 +42,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        CourseId = id
+                        CourseRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteCourse, parameters);
                     return new APIResponseData { status = "Success", description = "Course with ID: " + id + " has been deleted" };
@@ -66,10 +66,11 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            CourseId = course.CourseRowKey,
+                            CourseRowKey = course.CourseRowKey,
                             Name = course.Name,
                             Image = course.Image,
-                            SubjectId = course.SubjectRowKey
+                            SubjectRowKey = course.SubjectRowKey,
+                            Timestamp = DateTime.Now
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeCourse, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -98,7 +99,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            SubjectId = subjectId
+                            SubjectRowKey = subjectId
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSubjectCourses, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };

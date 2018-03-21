@@ -20,7 +20,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            ResponseId = id
+                            ResponseRowKey = id
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetResponse, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -49,12 +49,13 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            QuestionId = response.ResponseRowKey,
+                            ResponseRowKey = response.ResponseRowKey,
                             GameCompletionRowKey = response.GameCompletionRowKey,
                             QuestionRowKey = response.QuestionRowKey,
                             ChosenAnswer = response.ChosenAnswer,
                             IsCorrect = response.IsCorrect,
-                            UserRowKey = response.UserRowKey
+                            UserRowKey = response.UserRowKey,
+                            Timestamp = DateTime.Now
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeResponse, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -83,7 +84,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            QuestionId = questionId
+                            QuestionRowKey = questionId
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetQuestionResponses, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };

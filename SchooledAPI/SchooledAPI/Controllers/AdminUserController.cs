@@ -18,7 +18,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        AdminUserId = id
+                        AdminUserRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetAdminUser, parameters);
                     return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -61,7 +61,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        AdminUserId = id
+                        AdminUserRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteAdminUser, parameters);
                     return new APIResponseData { status = "Success", description = "Admin User with ID: " + id + " has been deleted" };
@@ -85,7 +85,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            UserId = user.AdminUserRowKey,
+                            UserRowKey = user.AdminUserRowKey,
                             Email = user.Email,
                             Password = user.Password,
                             FirstName = user.FirstName,

@@ -15,6 +15,8 @@ namespace SchooledAPI
             routes.MapRoute("GetUserByLogin", "user/getuserbylogin", new { controller = "User", action = "GetUserByLogin" });
             routes.MapRoute("DeleteUser", "user/deleteuser", new { controller = "User", action = "DeleteUser" });
             routes.MapRoute("MergeUser", "user/mergeuser", new { controller = "User", action = "MergeUser" });
+            routes.MapRoute("GetUserType", "user/getusertype", new { controller = "User", action = "GetUserType" });
+            routes.MapRoute("MergeUserType", "user/mergeusertype", new { controller = "User", action = "MergeUserType" });        
 
             //ADMINUSERS
             routes.MapRoute("GetAdminUser", "adminuser/getadminuser", new { controller = "AdminUser", action = "GetAdminUser" });
@@ -44,6 +46,15 @@ namespace SchooledAPI
             routes.MapRoute("GetResponse", "response/getresponse", new { controller = "Response", action = "GetResponse" });
             routes.MapRoute("MergeResponse", "response/mergequestion", new { controller = "Response", action = "MergeResponse" });
             routes.MapRoute("GetQuestionResponses", "response/getquestionresponses", new { controller = "Response", action = "GetQuestionResponses" });
+
+            //SCHOOLS (A)
+            //SCHOOLTYPES (A)
+            //COLLECTIONS
+            //GAMES
+            //GAMECOMPLETIONS
+            //COMPETITIONS
+            //RAFFELENTRIES
+            //SCHOOLSCORES
         }
 
         protected void Application_Start()

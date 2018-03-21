@@ -20,7 +20,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            QuestionId = id
+                            QuestionRowKey = id
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetQuestion, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -45,7 +45,7 @@ namespace SchooledAPI.Controllers
                 {
                     var parameters = new
                     {
-                        QuestionId = id
+                        QuestionRowKey = id
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteQuestion, parameters);
                     return new APIResponseData { status = "Success", description = "Question with ID: " + id + " has been deleted" };
@@ -69,10 +69,10 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            QuestionId = question.QuestionRowKey,
+                            QuestionRowKey = question.QuestionRowKey,
                             Question = question.Question,
-                            CollectionId = question.CollectionRowKey,
-                            CourseId = question.CourseRowKey,
+                            CollectionRowKey = question.CollectionRowKey,
+                            CourseRowKey = question.CourseRowKey,
                             Difficulty = question.Difficulty,
                             CorrectAnswer = question.CorrectAnswer,
                             TotalAnswers = question.TotalAnswers,
@@ -80,6 +80,7 @@ namespace SchooledAPI.Controllers
                             AnswerTwo = question.AnswerTwo,
                             AnswerThree = question.AnswerThree,
                             AnswerFour = question.AnswerFour,
+                            Timestamp = DateTime.Now
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeQuestion, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -108,7 +109,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            CourseId = courseId
+                            CourseRowKey = courseId
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCourseQuestions, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -136,7 +137,7 @@ namespace SchooledAPI.Controllers
                     {
                         var parameters = new
                         {
-                            CollectionId = collectionId
+                            CollectionRowKey = collectionId
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCollectionQuestions, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
