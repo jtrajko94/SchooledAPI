@@ -64,8 +64,10 @@ namespace SchooledAPI
             routes.MapRoute("MergeGame", "game/mergegame", new { controller = "Game", action = "MergeGame" });
             routes.MapRoute("DeleteGame", "game/deletegame", new { controller = "Game", action = "DeleteGame" });
 
+            //GAMECOMPLETIONS
+            routes.MapRoute("GetGameCompletion", "gamecompletion/getgamecompletion", new { controller = "GameCompletion", action = "GetGameCompletion" });
+            routes.MapRoute("MergeGameCompletion", "gamecompletion/mergegamecomplation", new { controller = "GameCompletion", action = "MergeGameCompletion" });
 
-            //GAMECOMPLETIONS - GET, MERGE, GETCOMPLETIONSPARTICULARGAME
             //COMPETITIONS - GET, MERGE, DELETE, GETACTIVECOMPETITIONBYTYPE
             //RAFFELENTRIES - GET, MERGE, GETWINNINGUSER
             //SCHOOLSCORES - GET, MERGE, GETTOP10GIVENPARAMETERS

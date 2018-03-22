@@ -10,11 +10,11 @@ namespace SchooledAPI.Controllers
     public class AdminUserController : Controller
     {
         [HttpGet]
-        public static APIResponseData GetAdminUserById(int id)
+        public static APIResponseData GetAdminUserById(int? id = null)
         {
             try
             {
-                using (var sql = new SqlData.Record<AdminUserData>())
+                using (var sql = new SqlData.Records<AdminUserData>())
                 {
                     var parameters = new
                     {

@@ -7,28 +7,28 @@ using System.Web.Mvc;
 
 namespace SchooledAPI.Controllers
 {
-    public class CollectionController : Controller
+    public class GameCompletionController : Controller
     {
         [HttpGet]
-        public static APIResponseData GetCollection(int? id = null)
+        public static APIResponseData GetGameCompletion(int? id = null)
         {
             try
             {
-                if (id != null)
+                if(id != null)
                 {
-                    using (var sql = new SqlData.Record<CollectionData>())
+                    using (var sql = new SqlData.Record<GameCompletionData>())
                     {
                         var parameters = new
                         {
-                            CollectionRowKey = id
+                            GameCompletionRowKey = id
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCollection, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetGameCompletion, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }
                 else
                 {
-                    return new APIResponseData { status = "Failed", description = "A Collection ID is required." };
+                    return new APIResponseData { status = "Failed", description = "Game Completion ID is required." };
                 }
             }
             catch (Exception err)
@@ -38,24 +38,28 @@ namespace SchooledAPI.Controllers
         }
 
         [HttpPost]
-        public static APIResponseData MergeCollection(CollectionData collection)
+        public static APIResponseData MergeGameCompletion(GameCompletionData gameCompletion)
         {
             try
             {
-                using (var sql = new SqlData.Record<CollectionData>())
+                using (var sql = new SqlData.Record<GameCompletionData>())
                 {
-                    APIValidatorResponse validatorResponse = CollectionService.IsValid(collection);
+                    APIValidatorResponse validatorResponse = GameCompletionService.IsValid(gameCompletion);
                     if (validatorResponse.IsValid)
                     {
                         var parameters = new
                         {
-                            CollectionRowKey = collection.CollectionRowKey,
-                            Image = collection.Image,
-                            Name = collection.Name,
-                            IsTextbook = collection.IsTextbook,
+                            GameCompletionRowKey = gameCompletion.GameCompletionRowKey,
+                            CompetitionRowKey = gameCompletion.CompetitionRowKey,
+                            CourseRowKey = gameCompletion.CourseRowKey,
+                            Difficulty = gameCompletion.Difficulty,
+                            GameRowKey = gameCompletion.GameRowKey,
+                            Points = gameCompletion.Points,
+                            RaffelTickets = gameCompletion.RaffelTickets,
+                            UserRowKey = gameCompletion.UserRowKey,
                             Timestamp = DateTime.Now
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeCollection, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeGameCompletion, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                     else

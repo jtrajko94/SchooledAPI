@@ -56,7 +56,11 @@
             //GAME
             GetGame,
             MergeGame,
-            DeleteGame
+            DeleteGame,
+
+            //GAMECOMPLETION
+            GetGameCompletion,
+            MergeGameCompletion
         }
     }
 }
