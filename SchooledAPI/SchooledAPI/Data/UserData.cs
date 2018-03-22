@@ -11,7 +11,7 @@ namespace SchooledAPI.Data
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public bool IsFacebook { get; set; }
+        public bool? IsFacebook { get; set; }
         public int GameDifficulty { get; set; }
         public DateTime? Timestamp { get; set; }
         public DateTime? CreatedOn { get; set; }

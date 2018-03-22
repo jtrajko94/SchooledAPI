@@ -48,6 +48,10 @@
             GetSchoolType,
             MergeSchoolType,
             SearchSchool,
+
+            //COLLECTION
+            GetCollection,
+            MergeCollection,
         }
     }
 }

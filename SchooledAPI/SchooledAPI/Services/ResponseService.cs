@@ -34,6 +34,12 @@ namespace SchooledAPI.Services
                 errors.Add("Chosen answer is required.");
             }
 
+            if(response.IsCorrect == null)
+            {
+                isValid = false;
+                errors.Add("IsCorrect is required.");
+            }
+
             return new APIValidatorResponse { IsValid = isValid, Errors = errors };
         }
     }

@@ -9,7 +9,7 @@ namespace SchooledAPI.Data
         public string UserRowKey { get; set; }
         public string QuestionRowKey { get; set; }
         public int ChosenAnswer { get; set; }
-        public bool IsCorrect { get; set; }
+        public bool? IsCorrect { get; set; }
         public DateTime? Timestamp { get; set; }
     }
 }
