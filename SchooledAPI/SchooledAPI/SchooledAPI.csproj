@@ -140,6 +140,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Data\APIValidatorResponse.cs" />
     <Compile Include="Data\CollectionData.cs" />
     <Compile Include="Data\CourseData.cs" />
+    <Compile Include="Data\GameData.cs" />
     <Compile Include="Data\QuestionData.cs" />
     <Compile Include="Data\ResponseData.cs" />
     <Compile Include="Data\SchoolData.cs" />
@@ -164,6 +166,7 @@
     <Compile Include="Services\AdminUserService.cs" />
     <Compile Include="Services\CollectionService.cs" />
     <Compile Include="Services\CourseService.cs" />
+    <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\QuestionService.cs" />
     <Compile Include="Services\ResponseService.cs" />
     <Compile Include="Services\SchoolService.cs" />
@@ -191,8 +194,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Collection\" />
-    <Folder Include="Views\School\" />
+    <Folder Include="Views\Game\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -52,6 +52,11 @@
             //COLLECTION
             GetCollection,
             MergeCollection,
+
+            //GAME
+            GetGame,
+            MergeGame,
+            DeleteGame
         }
     }
 }
