@@ -60,7 +60,13 @@
 
             //GAMECOMPLETION
             GetGameCompletion,
-            MergeGameCompletion
+            MergeGameCompletion,
+
+            //COMPETITIONS
+            GetCompetition,
+            MergeCompetition,
+            DeactivateCompetition,
+            GetActiveCompetition,
         }
     }
 }
