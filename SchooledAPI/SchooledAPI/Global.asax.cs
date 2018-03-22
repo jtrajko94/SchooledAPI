@@ -47,8 +47,14 @@ namespace SchooledAPI
             routes.MapRoute("MergeResponse", "response/mergequestion", new { controller = "Response", action = "MergeResponse" });
             routes.MapRoute("GetQuestionResponses", "response/getquestionresponses", new { controller = "Response", action = "GetQuestionResponses" });
 
-            //SCHOOLS (A)
-            //SCHOOLTYPES (A)
+            //SCHOOLS
+            routes.MapRoute("GetSchool", "school/getschool", new { controller = "School", action = "GetSchool" });
+            routes.MapRoute("DeleteSchool", "school/deleteschool", new { controller = "School", action = "DeleteSchool" });
+            routes.MapRoute("MergeSchool", "school/mergeschool", new { controller = "School", action = "MergeSchool" });
+            routes.MapRoute("SearchSchool", "school/searchschool", new { controller = "School", action = "SearchSchool" });
+            routes.MapRoute("GetSchoolType", "school/getschooltype", new { controller = "School", action = "GetSchoolType" });
+            routes.MapRoute("MergeSchoolType", "school/mergeschooltype", new { controller = "School", action = "MergeSchoolType" });
+
             //COLLECTIONS
             //GAMES
             //GAMECOMPLETIONS

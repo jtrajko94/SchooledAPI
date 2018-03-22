@@ -40,6 +40,14 @@
             GetResponse,
             MergeResponse,
             GetQuestionResponses,
+
+            //SCHOOLS
+            GetSchool,
+            MergeSchool,
+            DeleteSchool,
+            GetSchoolType,
+            MergeSchoolType,
+            SearchSchool,
         }
     }
 }

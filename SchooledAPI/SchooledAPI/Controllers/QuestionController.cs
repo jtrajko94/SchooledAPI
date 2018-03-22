@@ -25,7 +25,8 @@ namespace SchooledAPI.Controllers
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetQuestion, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
-                }else
+                }
+                else
                 {
                     return new APIResponseData { status = "Failed", description = "A Question ID is required." };
                 }
@@ -37,18 +38,25 @@ namespace SchooledAPI.Controllers
         }
 
         [HttpPost]
-        public static APIResponseData DeleteQuestion(int id)
+        public static APIResponseData DeleteQuestion(int? id = null)
         {
             try
             {
-                using (var sql = new SqlData.Command())
+                if(id != null)
                 {
-                    var parameters = new
+                    using (var sql = new SqlData.Command())
                     {
-                        QuestionRowKey = id
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteQuestion, parameters);
-                    return new APIResponseData { status = "Success", description = "Question with ID: " + id + " has been deleted" };
+                        var parameters = new
+                        {
+                            QuestionRowKey = id
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteQuestion, parameters);
+                        return new APIResponseData { status = "Success", description = "Question with ID: " + id + " has been deleted" };
+                    }
+                }
+                else
+                {
+                    return new APIResponseData { status = "Failed", description = "Question Id is required" };
                 }
             }
             catch (Exception err)

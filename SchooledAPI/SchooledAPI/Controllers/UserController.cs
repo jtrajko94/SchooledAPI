@@ -53,18 +53,25 @@ namespace SchooledAPI.Controllers
         }
 
         [HttpPost]
-        public static APIResponseData DeleteUser(int id)
+        public static APIResponseData DeleteUser(int? id = null)
         {
             try
             {
-                using (var sql = new SqlData.Command())
+                if(id != null)
                 {
-                    var parameters = new
+                    using (var sql = new SqlData.Command())
                     {
-                        UserRowKey = id
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteUser, parameters);
-                    return new APIResponseData { status = "Success", description = "User with ID: " + id + " has been deleted" };
+                        var parameters = new
+                        {
+                            UserRowKey = id
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteUser, parameters);
+                        return new APIResponseData { status = "Success", description = "User with ID: " + id + " has been deleted" };
+                    }
+                }
+                else
+                {
+                    return new APIResponseData { status = "Failed", description = "User Id is required" };
                 }
             }
             catch (Exception err)
@@ -86,8 +93,8 @@ namespace SchooledAPI.Controllers
                         var parameters = new
                         {
                             UserRowKey = user.UserRowKey,
-                            UserTypeRowKey = user.UserTypeId,
-                            SchoolRowKey = user.SchoolId,
+                            UserTypeRowKey = user.UserTypeRowKey,
+                            SchoolRowKey = user.SchoolRowKey,
                             Email = user.Email,
                             Password = user.Password,
                             FirstName = user.FirstName,
@@ -116,7 +123,7 @@ namespace SchooledAPI.Controllers
         {
             try
             {
-                using (var sql = new SqlData.Record<UserTypeData>())
+                using (var sql = new SqlData.Records<UserTypeData>())
                 {
                     var parameters = new
                     {

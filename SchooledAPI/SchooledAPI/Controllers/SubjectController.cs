@@ -31,18 +31,25 @@ namespace SchooledAPI.Controllers
         }
 
         [HttpPost]
-        public static APIResponseData DeleteSubject(int id)
+        public static APIResponseData DeleteSubject(int? id = null) 
         {
             try
             {
-                using (var sql = new SqlData.Command())
+                if(id != null)
                 {
-                    var parameters = new
+                    using (var sql = new SqlData.Command())
                     {
-                        SubjectRowKey = id
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteSubject, parameters);
-                    return new APIResponseData { status = "Success", description = "Subject with ID: " + id + " has been deleted" };
+                        var parameters = new
+                        {
+                            SubjectRowKey = id
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteSubject, parameters);
+                        return new APIResponseData { status = "Success", description = "Subject with ID: " + id + " has been deleted" };
+                    }
+                }
+                else
+                {
+                    return new APIResponseData { status = "Failed", description = "Subject Id is required" };
                 }
             }
             catch (Exception err)

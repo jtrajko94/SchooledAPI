@@ -53,18 +53,25 @@ namespace SchooledAPI.Controllers
         }
 
         [HttpPost]
-        public static APIResponseData DeleteAdminUser(int id)
+        public static APIResponseData DeleteAdminUser(int? id = null)
         {
             try
             {
-                using (var sql = new SqlData.Command())
+                if(id != null)
                 {
-                    var parameters = new
+                    using (var sql = new SqlData.Command())
                     {
-                        AdminUserRowKey = id
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteAdminUser, parameters);
-                    return new APIResponseData { status = "Success", description = "Admin User with ID: " + id + " has been deleted" };
+                        var parameters = new
+                        {
+                            AdminUserRowKey = id
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteAdminUser, parameters);
+                        return new APIResponseData { status = "Success", description = "Admin User with ID: " + id + " has been deleted" };
+                    }
+                }
+                else
+                {
+                    return new APIResponseData { status = "Failed", description = "Admin User Id is required" };
                 }
             }
             catch (Exception err)
