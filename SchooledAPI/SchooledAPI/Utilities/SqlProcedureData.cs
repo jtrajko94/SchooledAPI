@@ -4,6 +4,10 @@
     {
         public enum Procedures
         {
+            //APIKEYS
+            CreateAPIKey,
+            GetAPIKey,
+
             //USERS
             GetUser,
             GetUserByLogin,
@@ -78,7 +82,7 @@
             GetSchoolScore,
             MergeSchoolScore,
             GetSchoolCompetitionScores,
-            GetTopTenCompetitionSchools,
+            GetTopTenCompetitionSchools
         }
     }
 }
