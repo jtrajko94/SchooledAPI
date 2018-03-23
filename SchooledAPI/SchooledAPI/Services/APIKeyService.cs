@@ -11,16 +11,10 @@ namespace SchooledAPI.Services
         {
             try
             {
-                using (var sql = new SqlData.Records<APIKeyData>())
+                using (var sql = new SqlData.Record<Guid>())
                 {
-                    var parameters = new
-                    {
-                        APIRowKey = Guid.NewGuid().ToString(),
-                        CreatedDate = DateTime.Now,
-                        ExpiredDate = DateTime.Now.AddMinutes(5)
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.CreateAPIKey, parameters);
-                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.CreateAPIKey);
+                    return new APIResponseData { status = "Success", description = "API Key: " + sql.Run().ToString() };
                 }
             }
             catch (Exception err)
@@ -33,13 +27,13 @@ namespace SchooledAPI.Services
         {
             try
             {
-                if (string.IsNullOrEmpty(key))
+                if (!string.IsNullOrEmpty(key))
                 {
                     using (var sql = new SqlData.Record<APIKeyData>())
                     {
                         var parameters = new
                         {
-                            APIRowKey = Guid.NewGuid().ToString(),
+                            APIKey = Guid.Parse(key),
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetAPIKey, parameters);
                         return new APIResponseData

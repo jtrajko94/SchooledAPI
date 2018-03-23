@@ -7,6 +7,7 @@ using System.Net;
 using SchooledAPI.Services;
 using SchooledAPI.Data;
 using Newtonsoft.Json;
+using System;
 
 namespace SchooledAPI.Utilities
 {
@@ -32,7 +33,7 @@ namespace SchooledAPI.Utilities
                 if(response.status == "Success")
                 {
                     APIKeyData keyData = JsonConvert.DeserializeObject<APIKeyData>(response.description);
-                    if(!string.IsNullOrEmpty(keyData.APIKey) && keyData.ExpiredDate > keyData.CreatedDate)
+                    if(keyData.APIKey != null && keyData.ExpiredDate > DateTime.Now)
                     {
                         validKey = true;
                     }

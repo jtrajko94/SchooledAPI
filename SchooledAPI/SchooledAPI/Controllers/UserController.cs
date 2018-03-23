@@ -3,11 +3,11 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class UserController : Controller
+    public class UserController : ApiController
     {
         [HttpGet]
         public static APIResponseData GetUserById(int? id = null)
@@ -53,7 +53,7 @@ namespace SchooledAPI.Controllers
         }
 
         [HttpPost]
-        public static APIResponseData DeleteUser(int? id = null)
+        public APIResponseData DeleteUser(int? id = null)
         {
             try
             {

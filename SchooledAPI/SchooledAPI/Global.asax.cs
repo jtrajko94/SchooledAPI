@@ -11,14 +11,16 @@ namespace SchooledAPI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //TODO on these, MAPHTTPROUTE, controller/action, Change controller to API Controller, Change return types, remove static from action methods
+
             //APIKeyService
-            routes.MapRoute("CreateAPIKey", "api/create", new { controller = "APIKey", action = "CreateAPIKey" });
-            routes.MapRoute("GetAPIKey", "api/get", new { controller = "APIKey", action = "GetAPIKey" });
+            routes.MapHttpRoute("GetAPIKey", "apikey/get", new { controller = "APIKey", action = "Get" });
+            routes.MapHttpRoute("CreateAPIKey", "apikey/create", new { controller = "APIKey", action = "Create" });
 
             //USERS
             routes.MapRoute("GetUser", "user/getuser", new { controller = "User", action = "GetUser" });
             routes.MapRoute("GetUserByLogin", "user/getuserbylogin", new { controller = "User", action = "GetUserByLogin" });
-            routes.MapRoute("DeleteUser", "user/deleteuser", new { controller = "User", action = "DeleteUser" });
+            routes.MapHttpRoute("DeleteUser", "user/deleteuser", new { controller = "User", action = "DeleteUser" });
             routes.MapRoute("MergeUser", "user/mergeuser", new { controller = "User", action = "MergeUser" });
             routes.MapRoute("GetUserType", "user/getusertype", new { controller = "User", action = "GetUserType" });
             routes.MapRoute("MergeUserType", "user/mergeusertype", new { controller = "User", action = "MergeUserType" });        

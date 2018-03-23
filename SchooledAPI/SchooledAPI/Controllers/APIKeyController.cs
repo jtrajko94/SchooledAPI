@@ -1,21 +1,21 @@
 ﻿using SchooledAPI.Data;
 using SchooledAPI.Services;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class APIKeyController : Controller
+    public class APIKeyController : ApiController
     {
-        public static APIResponseData CreateAPIKey()
+        [HttpGet]
+        public APIResponseData Get(string key)
+        {
+            return APIKeyService.GetAPIKey(key);
+        }
+
+        [HttpGet]
+        public APIResponseData Create()
         {
             return APIKeyService.CreateAPIKey();
         }
-
-        [HttpPost]
-        public static APIResponseData GetAPIKey(string key)
-        {
-            return APIKeyService.GetAPIKey(key);   
-        }
-
     }
 }
