@@ -73,6 +73,12 @@
             MergeRaffelEntry,
             GetUserCompetitionRaffelEntry,
             GetWinningRaffelEntry,
+
+            //SCHOOLSCORES
+            GetSchoolScore,
+            MergeSchoolScore,
+            GetSchoolCompetitionScores,
+            GetTopTenCompetitionSchools,
         }
     }
 }

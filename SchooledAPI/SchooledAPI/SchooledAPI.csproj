@@ -147,6 +147,7 @@
     <Compile Include="Controllers\RaffelEntryController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\SchoolScoreController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\AdminUserData.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Data\RaffelEntryData.cs" />
     <Compile Include="Data\ResponseData.cs" />
     <Compile Include="Data\SchoolData.cs" />
+    <Compile Include="Data\SchoolScoreData.cs" />
     <Compile Include="Data\SchoolTypeData.cs" />
     <Compile Include="Data\SubjectData.cs" />
     <Compile Include="Data\UserData.cs" />
@@ -178,6 +180,7 @@
     <Compile Include="Services\QuestionService.cs" />
     <Compile Include="Services\RaffelEntryService.cs" />
     <Compile Include="Services\ResponseService.cs" />
+    <Compile Include="Services\SchoolScoreService.cs" />
     <Compile Include="Services\SchoolService.cs" />
     <Compile Include="Services\SchoolTypeService.cs" />
     <Compile Include="Services\SubjectService.cs" />
@@ -202,9 +205,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\RaffelEntry\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

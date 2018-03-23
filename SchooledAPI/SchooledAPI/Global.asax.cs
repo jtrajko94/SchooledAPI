@@ -80,8 +80,11 @@ namespace SchooledAPI
             routes.MapRoute("GetUserCompetitionRaffelEntry", "raffelentry/getusercompetitionraffelentry", new { controller = "RaffelEntry", action = "GetUserCompetitionRaffelEntry" });
             routes.MapRoute("GetWinningRaffelEntry", "raffelentry/getwinningraffelentry", new { controller = "RaffelEntry", action = "GetWinningRaffelEntry" });
 
-
             //SCHOOLSCORES - GET, MERGE, GETTOP10GIVENPARAMETERS
+            routes.MapRoute("GetSchoolScore", "schoolscore/getschoolscore", new { controller = "SchoolScore", action = "GetSchoolScore" });
+            routes.MapRoute("MergeSchoolScore", "schoolscore/mergeschoolscore", new { controller = "SchoolScore", action = "MergeSchoolScore" });
+            routes.MapRoute("GetSchoolCompetitionScores", "schoolscore/getschoolcompetitionscores", new { controller = "SchoolScore", action = "GetSchoolCompetitionScores" });
+            routes.MapRoute("GetTopTenCompetitionSchools", "schoolscore/gettoptencompetitionschools", new { controller = "SchoolScore", action = "GetTopTenCompetitionSchools" });
         }
 
         protected void Application_Start()
