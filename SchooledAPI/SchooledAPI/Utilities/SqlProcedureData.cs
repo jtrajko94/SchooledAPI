@@ -67,6 +67,12 @@
             MergeCompetition,
             DeactivateCompetition,
             GetActiveCompetition,
+
+            //RAFFELENTRY
+            GetRaffelEntry,
+            MergeRaffelEntry,
+            GetUserCompetitionRaffelEntry,
+            GetWinningRaffelEntry,
         }
     }
 }

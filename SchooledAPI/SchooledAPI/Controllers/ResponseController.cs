@@ -16,7 +16,7 @@ namespace SchooledAPI.Controllers
             {
                 if(id != null)
                 {
-                    using (var sql = new SqlData.Records<ResponseData>())
+                    using (var sql = new SqlData.Record<ResponseData>())
                     {
                         var parameters = new
                         {
