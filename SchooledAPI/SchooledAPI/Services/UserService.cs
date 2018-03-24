@@ -10,13 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
-            if (!Validator.Item(ValidatorType.AnyValue, user.UserTypeRowKey))
+            if (!Validator.Item(ValidatorType.AnyValue, user.UserTypeRowKey.ToString()))
             {
                 isValid = false;
                 errors.Add("User Type ID is required.");
             }
 
-            if (!Validator.Item(ValidatorType.AnyValue, user.SchoolRowKey))
+            if (!Validator.Item(ValidatorType.AnyValue, user.SchoolRowKey.ToString()))
             {
                 isValid = false;
                 errors.Add("School ID is required.");
@@ -40,10 +40,10 @@ namespace SchooledAPI.Services
                 errors.Add("First and Last Name are required.");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, user.GameDifficulty.ToString()))
+            if (!Validator.IsBoundedInteger(user.GameDifficulty, 1, 10))
             {
                 isValid = false;
-                errors.Add("Game Difficulty is required.");
+                errors.Add("Game Difficulty between 1-10 is required.");
             }
 
             return new APIValidatorResponse { IsValid = isValid, Errors = errors };

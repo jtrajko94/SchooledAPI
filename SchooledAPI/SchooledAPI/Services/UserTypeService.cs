@@ -16,6 +16,12 @@ namespace SchooledAPI.Services
                 errors.Add("User Type Name is required.");
             }
 
+            if (!Validator.IsBoundedInteger(userType.DefaultDifficulty, 1, 10))
+            {
+                isValid = false;
+                errors.Add("Difficulty between 1-10 is required.");
+            }
+
             return new APIValidatorResponse { IsValid = isValid, Errors = errors };
         }
     }

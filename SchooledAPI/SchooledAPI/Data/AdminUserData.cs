@@ -4,7 +4,7 @@ namespace SchooledAPI.Data
 {
     public class AdminUserData
     {
-        public string AdminUserRowKey { get; set; }
+        public Guid AdminUserRowKey { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }

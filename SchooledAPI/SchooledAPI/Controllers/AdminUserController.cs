@@ -3,18 +3,24 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class AdminUserController : Controller
+    public class AdminUserController : ApiController
     {
+        /*
+         * .../adminuser/get/ [HttpGet]
+         * Description: Get an Admin User with an ID
+         * Parameters: id (Guid of an Admin User), pass null for all admin users
+         * Result: APIResponseData with the full Admin User object
+         */
         [HttpGet]
-        public static APIResponseData GetAdminUserById(int? id = null)
+        public APIResponseData Get(Guid? id = null)
         {
             try
             {
-                using (var sql = new SqlData.Records<AdminUserData>())
+                using (var sql = new SqlData.Record<AdminUserData>())
                 {
                     var parameters = new
                     {
@@ -30,49 +36,35 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../adminuser/getbylogin/ [HttpGet]
+         * Description: Get an Admin User with login information
+         * Parameters: email (The email of the admin user) and password (the password of the admin user)
+         * Result: APIResponseData with the full Admin User Object
+         */
         [HttpGet]
-        public static APIResponseData GetAdminUserByLogin(string email, string password)
+        public APIResponseData GetByLogin(string email, string password)
         {
             try
             {
-                using (var sql = new SqlData.Record<AdminUserData>())
+                if(!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
                 {
-                    var parameters = new
-                    {
-                        Email = email,
-                        Password = password
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetAdminUserByLogin, parameters);
-                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpPost]
-        public static APIResponseData DeleteAdminUser(int? id = null)
-        {
-            try
-            {
-                if(id != null)
-                {
-                    using (var sql = new SqlData.Command())
+                    using (var sql = new SqlData.Record<AdminUserData>())
                     {
                         var parameters = new
                         {
-                            AdminUserRowKey = id
+                            Email = email,
+                            Password = password
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteAdminUser, parameters);
-                        return new APIResponseData { status = "Success", description = "Admin User with ID: " + id + " has been deleted" };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetAdminUserByLogin, parameters);
+                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }
                 else
                 {
-                    return new APIResponseData { status = "Failed", description = "Admin User Id is required" };
+                    return new APIResponseData { status = "Failed", description = "Email and Password are required." };
                 }
+                
             }
             catch (Exception err)
             {
@@ -80,12 +72,18 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../adminuser/merge/ [HttpPost]
+         * Description: Pass an admin user object to either create or update an admin user based on the Row Key
+         * Parameters: user (an admin user object)
+         * Result: APIResponse of the Guid of the inserted/edited admin user
+         */
         [HttpPost]
-        public static APIResponseData MergeAdminUser(AdminUserData user)
+        public APIResponseData Merge(AdminUserData user)
         {
             try
             {
-                using (var sql = new SqlData.Record<AdminUserData>())
+                using (var sql = new SqlData.Record<Guid>())
                 {
                     APIValidatorResponse response = AdminUserService.IsValid(user);
                     if (response.IsValid)
@@ -101,7 +99,7 @@ namespace SchooledAPI.Controllers
                             CreatedOn = user.CreatedOn
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeAdminUser, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run().ToString() };
                     }
                     else
                     {

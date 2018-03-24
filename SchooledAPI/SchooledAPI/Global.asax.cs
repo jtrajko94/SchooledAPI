@@ -11,32 +11,28 @@ namespace SchooledAPI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //TODO on these, MAPHTTPROUTE, controller/action, Change controller to API Controller, Change return types, remove static from action methods
+            //TODO on these, MAPHTTPROUTE, controller/action, Change controller to API Controller, Change return types, remove static from action methods, Data ids should be guids
 
             //APIKeyService
             routes.MapHttpRoute("GetAPIKey", "apikey/get", new { controller = "APIKey", action = "Get" });
             routes.MapHttpRoute("CreateAPIKey", "apikey/create", new { controller = "APIKey", action = "Create" });
 
             //USERS
-            routes.MapRoute("GetUser", "user/getuser", new { controller = "User", action = "GetUser" });
-            routes.MapRoute("GetUserByLogin", "user/getuserbylogin", new { controller = "User", action = "GetUserByLogin" });
-            routes.MapHttpRoute("DeleteUser", "user/deleteuser", new { controller = "User", action = "DeleteUser" });
-            routes.MapRoute("MergeUser", "user/mergeuser", new { controller = "User", action = "MergeUser" });
-            routes.MapRoute("GetUserType", "user/getusertype", new { controller = "User", action = "GetUserType" });
-            routes.MapRoute("MergeUserType", "user/mergeusertype", new { controller = "User", action = "MergeUserType" });        
+            routes.MapHttpRoute("GetUser", "user/get", new { controller = "User", action = "Get" });
+            routes.MapHttpRoute("GetUserByLogin", "user/getbylogin", new { controller = "User", action = "GetByLogin" });
+            routes.MapHttpRoute("MergeUser", "user/merge", new { controller = "User", action = "Merge" });
+            routes.MapHttpRoute("GetUserType", "user/getusertype", new { controller = "User", action = "GetUserType" });       
 
             //ADMINUSERS
-            routes.MapRoute("GetAdminUser", "adminuser/getadminuser", new { controller = "AdminUser", action = "GetAdminUser" });
-            routes.MapRoute("GetAdminUserByLogin", "adminuser/getadminuserbylogin", new { controller = "AdminUser", action = "GetAdminUserByLogin" });
-            routes.MapRoute("DeleteAdminUser", "adminuser/deleteadminuser", new { controller = "AdminUser", action = "DeleteAdminUser" });
-            routes.MapRoute("MergeAdminUser", "adminuser/mergeadminuser", new { controller = "AdminUser", action = "MergeAdminUser" });
+            routes.MapHttpRoute("GetAdminUser", "adminuser/get", new { controller = "AdminUser", action = "Get" });
+            routes.MapHttpRoute("GetAdminUserByLogin", "adminuser/getbylogin", new { controller = "AdminUser", action = "GetByLogin" });
+            routes.MapHttpRoute("MergeAdminUser", "adminuser/merge", new { controller = "AdminUser", action = "Merge" });
 
             //SUBJECTS
-            routes.MapRoute("GetSubject", "subject/getsubject", new { controller = "Subject", action = "GetSubject" });
-            routes.MapRoute("DeleteSubject", "subject/deletesubject", new { controller = "Subject", action = "DeleteSubject" });
-            routes.MapRoute("MergeSubject", "subject/mergesubject", new { controller = "Subject", action = "MergeSubject" });
+            routes.MapHttpRoute("GetSubject", "subject/get", new { controller = "Subject", action = "Get" });
+            routes.MapHttpRoute("MergeSubject", "subject/merge", new { controller = "Subject", action = "Merge" });
 
-            //COURSES
+            //COURSES - HERE
             routes.MapRoute("GetCourse", "course/getcourse", new { controller = "Course", action = "GetCourse" });
             routes.MapRoute("DeleteCourse", "course/deletecourse", new { controller = "Course", action = "DeleteCourse" });
             routes.MapRoute("MergeCourse", "course/mergecourse", new { controller = "Course", action = "MergeCourse" });

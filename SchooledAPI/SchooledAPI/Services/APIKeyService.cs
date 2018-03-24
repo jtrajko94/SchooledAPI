@@ -14,7 +14,7 @@ namespace SchooledAPI.Services
                 using (var sql = new SqlData.Record<Guid>())
                 {
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.CreateAPIKey);
-                    return new APIResponseData { status = "Success", description = "API Key: " + sql.Run().ToString() };
+                    return new APIResponseData { status = "Success", description = sql.Run().ToString() };
                 }
             }
             catch (Exception err)

@@ -25,6 +25,15 @@ namespace SchooledAPI.Utilities
 
     public static class Validator
     {
+        public static bool IsBoundedInteger(int? value, int lowerbound, int upperbound)
+        {
+            if(value != null && value >= lowerbound && value <= upperbound)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static bool Item(ValidatorType type, string value)
         {
 

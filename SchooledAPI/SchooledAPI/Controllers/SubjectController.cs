@@ -3,14 +3,20 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class SubjectController : Controller
+    public class SubjectController : ApiController
     {
+        /*
+         * .../subject/get/ [HttpGet]
+         * Description: Get a subject with the id, or all if null
+         * Parameters: id (The id of the subject)
+         * Result: APIResponseData with a single or all subjects
+         */
         [HttpGet]
-        public static APIResponseData GetSubject(int? id = null)
+        public APIResponseData Get(Guid? id = null)
         {
             try
             {
@@ -30,36 +36,14 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../subject/merge/ [HttpPost]
+         * Description: Edit or Insert a subject, based on if an ID is a match or not
+         * Parameters: subject (A subject object)
+         * Result: APIResponseData with the Guid of the subject
+         */
         [HttpPost]
-        public static APIResponseData DeleteSubject(int? id = null) 
-        {
-            try
-            {
-                if(id != null)
-                {
-                    using (var sql = new SqlData.Command())
-                    {
-                        var parameters = new
-                        {
-                            SubjectRowKey = id
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteSubject, parameters);
-                        return new APIResponseData { status = "Success", description = "Subject with ID: " + id + " has been deleted" };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Subject Id is required" };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpPost]
-        public static APIResponseData MergeSubject(SubjectData subject)
+        public APIResponseData Merge(SubjectData subject)
         {
             try
             {
