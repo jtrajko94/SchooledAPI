@@ -3,14 +3,20 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class SchoolController : Controller
+    public class SchoolController : ApiController
     {
+        /*
+         * .../school/get/ [HttpGet]
+         * Description: Get a specific school by ID
+         * Parameters: id (a school object)
+         * Result: APIResponseData of the school object 
+         */
         [HttpGet]
-        public static APIResponseData GetSchool(int? id = null)
+        public APIResponseData Get(string id = null)
         {
             try
             {
@@ -38,60 +44,40 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+        * .../school/merge/ [HttpPost]
+        * Description: Pass a school object to either create or update a school based on the Row Key
+        * Parameters: schooljson (a school object json)
+        * Result: APIResponse of the Guid of the inserted/edited school
+        */
         [HttpPost]
-        public static APIResponseData DeleteSchool(int? id = null)
+        public APIResponseData Merge(string schooljson = null)
         {
             try
             {
-                if (id != null)
-                {
-                    using (var sql = new SqlData.Command())
-                    {
-                        var parameters = new
-                        {
-                            SchoolRowKey = id
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteSchool, parameters);
-                        return new APIResponseData { status = "Success", description = "School with ID: " + id + " has been deleted" };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "School Id required." };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpPost]
-        public static APIResponseData MergeSchool(SchoolData school)
-        {
-            try
-            {
-                using (var sql = new SqlData.Record<SchoolData>())
+                SchoolData school = JsonConvert.DeserializeObject<SchoolData>(schooljson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse response = SchoolService.IsValid(school);
                     if (response.IsValid)
                     {
+                        Guid schoolGuid, schoolTypeGuid;
+
                         var parameters = new
                         {
-                            SchoolRowKey = school.SchoolRowKey,
-                            SchoolTypeRowKey = school.SchoolTypeRowKey,
-                            Email = school.Name,
+                            SchoolRowKey = !string.IsNullOrEmpty(school.SchoolRowKey) && Guid.TryParse(school.SchoolRowKey, out schoolGuid) ? (Guid?) Guid.Parse(school.SchoolRowKey) : null,
+                            SchoolTypeRowKey = !string.IsNullOrEmpty(school.SchoolTypeRowKey) && Guid.TryParse(school.SchoolTypeRowKey, out schoolTypeGuid) ? (Guid?) Guid.Parse(school.SchoolTypeRowKey) : null,
+                            Name = school.Name,
                             Street = school.Street,
                             City = school.City,
                             State = school.State,
                             Zipcode = school.Zipcode,
                             Country = school.Country,
                             District = school.District,
-                            StudentCount = school.StudentCount,
-                            Timestamp = DateTime.Now
+                            StudentCount = school.StudentCount
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeSchool, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run().ToString() };
                     }
                     else
                     {
@@ -106,8 +92,14 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../school/search/ [HttpGet]
+         * Description: Get a specific school by searching
+         * Parameters: schooltypeid, name(uses LIKE, can be used as a search term), state, district, country (all strings)
+         * Result: APIResponseData of the schools with the given criteria
+         */
         [HttpPost]
-        public static APIResponseData SearchSchool(string name, string state, string district, string country)
+        public APIResponseData Search(string schooltypeid = null, string name = null, string state = null, string district = null, string country = null)
         {
             try
             {
@@ -115,6 +107,7 @@ namespace SchooledAPI.Controllers
                 {
                         var parameters = new
                         {
+                            SchoolTypeRowKey = schooltypeid,
                             Name = name,
                             State = state,
                             District = district,
@@ -130,8 +123,14 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../school/getschooltype/ [HttpGet]
+         * Description: Get the school type record with a given Id, all school types if empty
+         * Parameters: id (school type id)
+         * Result: APIResponse of the School Type with that id, or all of them
+         */
         [HttpGet]
-        public static APIResponseData GetSchoolType(int? id = null)
+        public APIResponseData GetSchoolType(string id = null)
         {
             try
             {
@@ -143,38 +142,6 @@ namespace SchooledAPI.Controllers
                     };
                     sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSchoolType, parameters);
                     return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpPost]
-        public static APIResponseData MergeUserType(SchoolTypeData schoolType)
-        {
-            try
-            {
-                using (var sql = new SqlData.Record<SchoolTypeData>())
-                {
-                    APIValidatorResponse response = SchoolTypeService.IsValid(schoolType);
-                    if (response.IsValid)
-                    {
-                        var parameters = new
-                        {
-                            SchoolTypeRowKey = schoolType.SchoolTypeRowKey,
-                            Name = schoolType.Name,
-                            Timestamp = DateTime.Now
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeSchoolType, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
-                    }
-                    else
-                    {
-                        return new APIResponseData { status = "Failed : Validation", description = JsonConvert.SerializeObject(response.Errors) };
-                    }
-
                 }
             }
             catch (Exception err)

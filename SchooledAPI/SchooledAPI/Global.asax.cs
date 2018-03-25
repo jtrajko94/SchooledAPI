@@ -17,6 +17,12 @@ namespace SchooledAPI
             routes.MapHttpRoute("GetAPIKey", "apikey/get", new { controller = "APIKey", action = "Get" });
             routes.MapHttpRoute("CreateAPIKey", "apikey/create", new { controller = "APIKey", action = "Create" });
 
+            //SCHOOLS
+            routes.MapHttpRoute("GetSchool", "school/get", new { controller = "School", action = "Get" });
+            routes.MapHttpRoute("MergeSchool", "school/merge", new { controller = "School", action = "Merge" });
+            routes.MapHttpRoute("SearchSchool", "school/search", new { controller = "School", action = "Search" });
+            routes.MapHttpRoute("GetSchoolType", "school/getschooltype", new { controller = "School", action = "GetSchoolType" });
+
             //USERS
             routes.MapHttpRoute("GetUser", "user/get", new { controller = "User", action = "Get" });
             routes.MapHttpRoute("GetUserByLogin", "user/getbylogin", new { controller = "User", action = "GetByLogin" });
@@ -50,14 +56,6 @@ namespace SchooledAPI
             routes.MapRoute("MergeResponse", "response/mergequestion", new { controller = "Response", action = "MergeResponse" });
             routes.MapRoute("GetQuestionResponses", "response/getquestionresponses", new { controller = "Response", action = "GetQuestionResponses" });
 
-            //SCHOOLS
-            routes.MapRoute("GetSchool", "school/getschool", new { controller = "School", action = "GetSchool" });
-            routes.MapRoute("DeleteSchool", "school/deleteschool", new { controller = "School", action = "DeleteSchool" });
-            routes.MapRoute("MergeSchool", "school/mergeschool", new { controller = "School", action = "MergeSchool" });
-            routes.MapRoute("SearchSchool", "school/searchschool", new { controller = "School", action = "SearchSchool" });
-            routes.MapRoute("GetSchoolType", "school/getschooltype", new { controller = "School", action = "GetSchoolType" });
-            routes.MapRoute("MergeSchoolType", "school/mergeschooltype", new { controller = "School", action = "MergeSchoolType" });
-
             //COLLECTIONS
             routes.MapRoute("GetCollection", "collection/getcollection", new { controller = "Collection", action = "GetCollection" });
             routes.MapRoute("MergeCollection", "collection/mergecollection", new { controller = "Collection", action = "MergeCollection" });
@@ -88,6 +86,10 @@ namespace SchooledAPI
             routes.MapRoute("MergeSchoolScore", "schoolscore/mergeschoolscore", new { controller = "SchoolScore", action = "MergeSchoolScore" });
             routes.MapRoute("GetSchoolCompetitionScores", "schoolscore/getschoolcompetitionscores", new { controller = "SchoolScore", action = "GetSchoolCompetitionScores" });
             routes.MapRoute("GetTopTenCompetitionSchools", "schoolscore/gettoptencompetitionschools", new { controller = "SchoolScore", action = "GetTopTenCompetitionSchools" });
+
+            //TEST
+            routes.MapRoute("CreateUser", "test/createuser", new { controller = "Test", action = "CreateUser" });
+            routes.MapRoute("CreateAdminUser", "test/createadminuser", new { controller = "Test", action = "CreateAdminUser" });
         }
 
         protected void Application_Start()

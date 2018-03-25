@@ -10,10 +10,17 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
-            if (!Validator.Item(ValidatorType.AnyValue, school.SchoolTypeRowKey))
+
+            if (school.SchoolRowKey != null && !Validator.IsValidGuid(school.SchoolRowKey))
             {
                 isValid = false;
-                errors.Add("School Type ID is required.");
+                errors.Add("School ID is invalid. Can enter null if inserting.");
+            }
+
+            if (!Validator.IsValidGuid(school.SchoolTypeRowKey))
+            {
+                isValid = false;
+                errors.Add("School Type ID is invalid.");
             }
 
             if (!Validator.Item(ValidatorType.AnyValue, school.Name))

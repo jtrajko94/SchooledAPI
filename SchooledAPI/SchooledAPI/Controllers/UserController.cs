@@ -12,7 +12,7 @@ namespace SchooledAPI.Controllers
         /*
          * .../user/get/ [HttpGet]
          * Description: Get a specific user by ID
-         * Parameters: id (an admin user object)
+         * Parameters: id (an user object)
          * Result: APIResponseData of the user object 
          */
         [HttpGet]

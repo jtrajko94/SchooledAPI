@@ -25,6 +25,19 @@ namespace SchooledAPI.Utilities
 
     public static class Validator
     {
+        public static bool IsValidGuid(string id)
+        {
+            Guid guid;
+            if(Guid.TryParse(id, out guid))
+            {
+                if(guid != null && guid != Guid.Empty)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static bool IsBoundedInteger(int? value, int lowerbound, int upperbound)
         {
             if(value != null && value >= lowerbound && value <= upperbound)
