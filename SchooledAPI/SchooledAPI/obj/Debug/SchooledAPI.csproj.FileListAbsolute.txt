@@ -48,3 +48,23 @@ C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Dapper
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.xml
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.xml
 C:\Users\jerun\OneDrive\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\Microsoft.ServiceBus.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\SchooledAPI.dll.config
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\SchooledAPI.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\SchooledAPI.pdb
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Dapper.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Newtonsoft.Json.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\System.Web.Http.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\System.Web.Http.WebHost.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Dapper.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\Newtonsoft.Json.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\System.Net.Http.Formatting.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\System.Web.Http.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.dll
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.pdb
+C:\Users\jerun\Desktop\New folder\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.csprojResolveAssemblyReference.cache

@@ -3,11 +3,11 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class GameCompletionController : Controller
+    public class GameCompletionController : ApiController
     {
         [HttpGet]
         public static APIResponseData GetGameCompletion(int? id = null)

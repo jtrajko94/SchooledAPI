@@ -3,11 +3,11 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class SchoolScoreController : Controller
+    public class SchoolScoreController : ApiController
     {
         [HttpGet]
         public static APIResponseData GetSchoolScore(int? id = null)

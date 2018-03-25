@@ -6,11 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace SchooledAPI.Controllers
 {
-    public class CourseController : Controller
+    public class CourseController : ApiController
     {
         [HttpGet]
         public static APIResponseData GetCourse(int? id = null)
