@@ -16,11 +16,11 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData of the user object 
          */
         [HttpGet]
-        public APIResponseData Get(Guid id)
+        public APIResponseData Get(string id)
         {
             try
             {
-                if(id == null)
+                if(id != null)
                 {
                     using (var sql = new SqlData.Record<UserData>())
                     {
@@ -61,7 +61,7 @@ namespace SchooledAPI.Controllers
                         var parameters = new
                         {
                             Email = email,
-                            Password = password
+                            Password = BCrypt.Net.BCrypt.HashPassword(password, Settings.BcryptSalt),
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetUserByLogin, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -85,11 +85,12 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited user
          */
         [HttpPost]
-        public APIResponseData Merge(UserData user)
+        public APIResponseData Merge(string userjson = null)
         {
             try
             {
-                using (var sql = new SqlData.Record<Guid>())
+                UserData user = JsonConvert.DeserializeObject<UserData>(userjson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse response = UserService.IsValid(user);
                     if (response.IsValid)
@@ -100,13 +101,11 @@ namespace SchooledAPI.Controllers
                             UserTypeRowKey = user.UserTypeRowKey,
                             SchoolRowKey = user.SchoolRowKey,
                             Email = user.Email,
-                            Password = user.Password,
+                            Password = BCrypt.Net.BCrypt.HashPassword(user.Password, Settings.BcryptSalt),
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             IsFacebook = user.IsFacebook,
-                            GameDifficulty = user.GameDifficulty,
-                            Timestamp = DateTime.Now,
-                            CreatedOn = user.CreatedOn
+                            GameDifficulty = user.GameDifficulty
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeUser, parameters);
                         return new APIResponseData { status = "Success", description = sql.Run().ToString() };
@@ -129,7 +128,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the User Type with that id, or all of them
          */
         [HttpGet]
-        public APIResponseData GetUserType(Guid? id = null)
+        public APIResponseData GetUserType(string id = null)
         {
             try
             {

@@ -9,14 +9,13 @@
   "State": null,
   "Zipcode": null,
   "District": null,
-  "Country": null,
-  "Timestamp": null
+  "Country": null
 }
 
 //Insert
 {
   "SchoolRowKey": null,
-  "SchoolTypeRowKey": "FE3B2875-D634-462B-9EAB-B0959594781E",
+  "SchoolTypeRowKey": "0422B35F-7214-4C25-9F08-72CDD14D5742",
   "Name": "Glenbard East High School",
   "StudentCount": 2600,
   "Street": "148 S. Waters Edge Dr. Unit C",

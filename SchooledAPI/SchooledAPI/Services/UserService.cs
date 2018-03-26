@@ -10,7 +10,14 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
-            if (!Validator.Item(ValidatorType.AnyValue, user.UserTypeRowKey.ToString()))
+
+            if (user.UserRowKey != null && !Validator.IsValidGuid(user.UserRowKey))
+            {
+                isValid = false;
+                errors.Add("User ID is invalid. Can enter null if inserting.");
+            }
+
+            if (!Validator.IsValidGuid(user.UserTypeRowKey))
             {
                 isValid = false;
                 errors.Add("User Type ID is required.");

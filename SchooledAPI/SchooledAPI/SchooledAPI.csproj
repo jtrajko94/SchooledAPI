@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
@@ -100,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="SampleJsons\school.txt" />
+    <Content Include="SampleJsons\user.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -153,10 +159,8 @@
     <Compile Include="Services\ResponseService.cs" />
     <Compile Include="Services\SchoolScoreService.cs" />
     <Compile Include="Services\SchoolService.cs" />
-    <Compile Include="Services\SchoolTypeService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Services\UserService.cs" />
-    <Compile Include="Services\UserTypeService.cs" />
     <Compile Include="Utilities\APIKeyMessageHandler.cs" />
     <Compile Include="Utilities\Email.cs" />
     <Compile Include="Utilities\EmailMessage.cs" />
@@ -177,9 +181,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SampleJsons\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

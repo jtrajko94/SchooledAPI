@@ -19,5 +19,7 @@ namespace SchooledAPI.Utilities
         public static string EmailPassword = "";
         public static int EmailPort = 0;
         public static bool EmailSsl = false;
+
+        public static string BcryptSalt = "$2a$10$eaXdujHaGGxH7j9JcWgf4.";
     }
 }
