@@ -10,6 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
+
+            if (collection.CollectionRowKey != null && !Validator.IsValidGuid(collection.CollectionRowKey))
+            {
+                isValid = false;
+                errors.Add("Collection ID is invalid. Can enter null if inserting.");
+            }
+
             if (!Validator.Item(ValidatorType.AnyValue, collection.CollectionRowKey))
             {
                 isValid = false;

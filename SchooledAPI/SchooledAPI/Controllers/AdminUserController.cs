@@ -10,7 +10,7 @@ namespace SchooledAPI.Controllers
     public class AdminUserController : ApiController
     {
         /*
-         * .../adminuser/get/ [HttpGet]
+         * .../adminuser/get/?id= [HttpGet]
          * Description: Get an Admin User with an ID
          * Parameters: id (id of an Admin User), pass null for all admin users
          * Result: APIResponseData with the full Admin User object
@@ -37,7 +37,7 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../adminuser/getbylogin/ [HttpGet]
+         * .../adminuser/getbylogin/?email=&password= [HttpGet]
          * Description: Get an Admin User with login information
          * Parameters: email (The email of the admin user) and password (the password of the admin user)
          * Result: APIResponseData with the full Admin User Object
@@ -73,13 +73,13 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../adminuser/merge/ [HttpPost]
+         * .../adminuser/merge/?adminuserjson= [HttpPost]
          * Description: Pass an admin user object to either create or update an admin user based on the Row Key
          * Parameters: admin user json (an admin user object)
          * Result: APIResponse of the Guid of the inserted/edited admin user
          */
         [HttpPost]
-        public APIResponseData Merge(string adminuserjson = null)
+        public APIResponseData Merge(string adminuserjson)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace SchooledAPI.Controllers
                             LastName = user.LastName
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeAdminUser, parameters);
-                        return new APIResponseData { status = "Success", description = sql.Run().ToString() };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {

@@ -9,26 +9,25 @@ namespace SchooledAPI.Controllers
 {
     public class CollectionController : ApiController
     {
+        /*
+         * .../collection/get/?id= [HttpGet]
+         * Description: Get a specific collection by ID, all if null
+         * Parameters: id (a collection object), all if null
+         * Result: APIResponseData of the collection object 
+         */
         [HttpGet]
-        public static APIResponseData GetCollection(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
-                if (id != null)
+                using (var sql = new SqlData.Records<CollectionData>())
                 {
-                    using (var sql = new SqlData.Record<CollectionData>())
+                    var parameters = new
                     {
-                        var parameters = new
-                        {
-                            CollectionRowKey = id
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCollection, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "A Collection ID is required." };
+                        CollectionRowKey = id
+                    };
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCollection, parameters);
+                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                 }
             }
             catch (Exception err)
@@ -37,12 +36,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../collection/merge/?collectionjson= [HttpPost]
+         * Description: Pass a collection object to either create or update a collection based on the Row Key
+         * Parameters: collectionjson (a collection object)
+         * Result: APIResponse of the Guid of the inserted/edited question
+         */
         [HttpPost]
-        public static APIResponseData MergeCollection(CollectionData collection)
+        public static APIResponseData Merge(string collectionjson)
         {
             try
             {
-                using (var sql = new SqlData.Record<CollectionData>())
+                CollectionData collection = JsonConvert.DeserializeObject<CollectionData>(collectionjson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse validatorResponse = CollectionService.IsValid(collection);
                     if (validatorResponse.IsValid)
@@ -52,11 +58,10 @@ namespace SchooledAPI.Controllers
                             CollectionRowKey = collection.CollectionRowKey,
                             Image = collection.Image,
                             Name = collection.Name,
-                            IsTextbook = collection.IsTextbook,
-                            Timestamp = DateTime.Now
+                            IsTextbook = collection.IsTextbook
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeCollection, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {

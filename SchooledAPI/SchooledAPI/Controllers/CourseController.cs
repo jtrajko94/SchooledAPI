@@ -12,8 +12,14 @@ namespace SchooledAPI.Controllers
 {
     public class CourseController : ApiController
     {
+        /*
+         * .../course/get/?id= [HttpGet]
+         * Description: Get a specific course by ID
+         * Parameters: id (a course object)
+         * Result: APIResponseData of the course object 
+         */
         [HttpGet]
-        public static APIResponseData GetCourse(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
@@ -33,40 +39,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../course/merge/?coursejson= [HttpPost]
+         * Description: Pass a course object to either create or update a course based on the Row Key
+         * Parameters: course json (a course object)
+         * Result: APIResponse of the Guid of the inserted/edited course
+         */
         [HttpPost]
-        public static APIResponseData DeleteCourse(int? id = null)
+        public static APIResponseData Merge(string coursejson)
         {
             try
             {
-                if (id != null)
-                {
-                    using (var sql = new SqlData.Command())
-                    {
-                        var parameters = new
-                        {
-                            CourseRowKey = id
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteCourse, parameters);
-                        return new APIResponseData { status = "Success", description = "Course with ID: " + id + " has been deleted" };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Course Id is required" };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpPost]
-        public static APIResponseData MergeCourse(CourseData course)
-        {
-            try
-            {
-                using (var sql = new SqlData.Record<CourseData>())
+                CourseData course = JsonConvert.DeserializeObject<CourseData>(coursejson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse response = CourseService.IsValid(course);
                     if (response.IsValid)
@@ -76,11 +61,10 @@ namespace SchooledAPI.Controllers
                             CourseRowKey = course.CourseRowKey,
                             Name = course.Name,
                             Image = course.Image,
-                            SubjectRowKey = course.SubjectRowKey,
-                            Timestamp = DateTime.Now
+                            SubjectRowKey = course.SubjectRowKey
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeCourse, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
@@ -96,7 +80,7 @@ namespace SchooledAPI.Controllers
         }
 
         [HttpGet]
-        public static APIResponseData GetSubjectCourses(int? subjectId = null)
+        public static APIResponseData GetBySubject(string subjectId)
         {
             try
             {
@@ -108,7 +92,7 @@ namespace SchooledAPI.Controllers
                         {
                             SubjectRowKey = subjectId
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSubjectCourses, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetBySubject, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }

@@ -13,8 +13,9 @@ namespace SchooledAPI.Data
         public string AnswerTwo { get; set; }
         public string AnswerThree { get; set; }
         public string AnswerFour { get; set; }
-        public int Difficulty { get; set; }
-        public int CorrectAnswer {get; set; }
+        public int? Difficulty { get; set; }
+        public int? CorrectAnswer {get; set; }
         public DateTime? Timestamp { get; set; }
+        public DateTime? CreatedOn { get; set; }
     }
 }

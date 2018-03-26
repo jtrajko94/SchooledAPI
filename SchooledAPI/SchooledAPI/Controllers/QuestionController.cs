@@ -9,14 +9,20 @@ namespace SchooledAPI.Controllers
 {
     public class QuestionController : ApiController
     {
+        /*
+         * .../question/get/?id= [HttpGet]
+         * Description: Get a specific question by ID
+         * Parameters: id (a question object)
+         * Result: APIResponseData of the question object 
+         */
         [HttpGet]
-        public static APIResponseData GetQuestion(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
                 if(id != null)
                 {
-                    using (var sql = new SqlData.Records<CourseData>())
+                    using (var sql = new SqlData.Records<QuestionData>())
                     {
                         var parameters = new
                         {
@@ -37,40 +43,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../question/merge/?questionjson= [HttpPost]
+         * Description: Pass a question object to either create or update a question based on the Row Key
+         * Parameters: questionjson (a question object)
+         * Result: APIResponse of the Guid of the inserted/edited question
+         */
         [HttpPost]
-        public static APIResponseData DeleteQuestion(int? id = null)
+        public static APIResponseData Merge(string questionjson)
         {
             try
             {
-                if(id != null)
-                {
-                    using (var sql = new SqlData.Command())
-                    {
-                        var parameters = new
-                        {
-                            QuestionRowKey = id
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteQuestion, parameters);
-                        return new APIResponseData { status = "Success", description = "Question with ID: " + id + " has been deleted" };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Question Id is required" };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpPost]
-        public static APIResponseData MergeQuestion(QuestionData question)
-        {
-            try
-            {
-                using (var sql = new SqlData.Record<QuestionData>())
+                QuestionData question = JsonConvert.DeserializeObject<QuestionData>(questionjson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse response = QuestionService.IsValid(question);
                     if (response.IsValid)
@@ -87,11 +72,10 @@ namespace SchooledAPI.Controllers
                             AnswerOne = question.AnswerOne,
                             AnswerTwo = question.AnswerTwo,
                             AnswerThree = question.AnswerThree,
-                            AnswerFour = question.AnswerFour,
-                            Timestamp = DateTime.Now
+                            AnswerFour = question.AnswerFour
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeQuestion, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
@@ -106,54 +90,27 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../question/search/?courseid=&collectionid=&count= [HttpGet]
+         * Description: Get list of questions
+         * Parameters: courseid, collectionid, count (amount of records)
+         * Result: APIResponseData of the questions with the given criteria
+         */
         [HttpGet]
-        public static APIResponseData GetCourseQuestions(int? courseId = null)
+        public APIResponseData Search(string courseid, string collectionid, int count = 10)
         {
             try
             {
-                if(courseId != null)
+                using (var sql = new SqlData.Records<QuestionData>())
                 {
-                    using (var sql = new SqlData.Records<CourseData>())
+                    var parameters = new
                     {
-                        var parameters = new
-                        {
-                            CourseRowKey = courseId
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCourseQuestions, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Please provide a Course Id." };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpGet]
-        public static APIResponseData GetCollectionQuestions(int? collectionId = null)
-        {
-            try
-            {
-                if (collectionId != null)
-                {
-                    using (var sql = new SqlData.Records<CourseData>())
-                    {
-                        var parameters = new
-                        {
-                            CollectionRowKey = collectionId
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCollectionQuestions, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Please provide a Collection Id." };
+                        CourseRowKey = courseid,
+                        CollectionRowKey = collectionid,
+                        Amount = count
+                    };
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.SearchQuestion, parameters);
+                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                 }
             }
             catch (Exception err)

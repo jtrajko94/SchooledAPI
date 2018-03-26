@@ -10,7 +10,7 @@ namespace SchooledAPI.Controllers
     public class UserController : ApiController
     {
         /*
-         * .../user/get/ [HttpGet]
+         * .../user/get/?id= [HttpGet]
          * Description: Get a specific user by ID
          * Parameters: id (an user object)
          * Result: APIResponseData of the user object 
@@ -44,7 +44,7 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../user/getbylogin/ [HttpGet]
+         * .../user/getbylogin/?email=&password= [HttpGet]
          * Description: Get a specific user by their login
          * Parameters: email (the email of the user) and password (user's password)
          * Result: APIResponseData of the user object 
@@ -79,13 +79,13 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../user/merge/ [HttpPost]
+         * .../user/merge/?userjson= [HttpPost]
          * Description: Pass an user object to either create or update a user based on the Row Key
          * Parameters: user (an user object)
          * Result: APIResponse of the Guid of the inserted/edited user
          */
         [HttpPost]
-        public APIResponseData Merge(string userjson = null)
+        public APIResponseData Merge(string userjson)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace SchooledAPI.Controllers
                             GameDifficulty = user.GameDifficulty
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeUser, parameters);
-                        return new APIResponseData { status = "Success", description = sql.Run().ToString() };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     } else {
                         return new APIResponseData { status = "Failed : Validation", description = JsonConvert.SerializeObject(response.Errors) };
                     }
@@ -122,13 +122,13 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../user/getusertype/ [HttpGet]
+         * .../user/getusertype/id= [HttpGet]
          * Description: Get the user type record with a given Id, all user types if null
          * Parameters: id (user type id)
          * Result: APIResponse of the User Type with that id, or all of them
          */
         [HttpGet]
-        public APIResponseData GetUserType(string id = null)
+        public APIResponseData GetUserType(string id)
         {
             try
             {

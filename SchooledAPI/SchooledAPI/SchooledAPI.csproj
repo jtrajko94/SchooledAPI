@@ -105,7 +105,11 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="SampleJsons\adminuser.txt" />
+    <Content Include="SampleJsons\collection.txt" />
+    <Content Include="SampleJsons\course.txt" />
+    <Content Include="SampleJsons\question.txt" />
     <Content Include="SampleJsons\school.txt" />
+    <Content Include="SampleJsons\subject.txt" />
     <Content Include="SampleJsons\user.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

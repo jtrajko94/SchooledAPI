@@ -11,7 +11,13 @@ namespace SchooledAPI.Services
             List<string> errors = new List<string>();
             bool isValid = true;
 
-            if(question.TotalAnswers == 4)
+            if (question.QuestionRowKey != null && !Validator.IsValidGuid(question.QuestionRowKey))
+            {
+                isValid = false;
+                errors.Add("Question ID is invalid. Can enter null if inserting.");
+            }
+
+            if (question.TotalAnswers == 4)
             {
                 if (!Validator.Item(ValidatorType.AnyValue, question.AnswerOne.ToString())
                     && !Validator.Item(ValidatorType.AnyValue, question.AnswerTwo.ToString())
@@ -22,7 +28,7 @@ namespace SchooledAPI.Services
                     errors.Add("Four answers needed.");
                 }
 
-                if(!Validator.Item(ValidatorType.Integer, question.CorrectAnswer.ToString()) && question.CorrectAnswer >= 1 && question.CorrectAnswer <= 4)
+                if (!Validator.IsBoundedInteger(question.CorrectAnswer, 1, 4))
                 {
                     isValid = false;
                     errors.Add("Provide a valid correct answer (i.e. 1-4)");
@@ -37,7 +43,7 @@ namespace SchooledAPI.Services
                     errors.Add("Three answers needed.");
                 }
 
-                if (!Validator.Item(ValidatorType.Integer, question.CorrectAnswer.ToString()) && question.CorrectAnswer >= 1 && question.CorrectAnswer <= 3)
+                if (!Validator.IsBoundedInteger(question.CorrectAnswer, 1, 3))
                 {
                     isValid = false;
                     errors.Add("Provide a valid correct answer (i.e. 1-3)");
@@ -51,7 +57,7 @@ namespace SchooledAPI.Services
                     errors.Add("Two answers needed.");
                 }
 
-                if (!Validator.Item(ValidatorType.Integer, question.CorrectAnswer.ToString()) && question.CorrectAnswer >= 1 && question.CorrectAnswer <= 2)
+                if (!Validator.IsBoundedInteger(question.CorrectAnswer, 1, 2))
                 {
                     isValid = false;
                     errors.Add("Provide a valid correct answer (i.e. 1-2)");
@@ -63,13 +69,13 @@ namespace SchooledAPI.Services
                 errors.Add("Invalid total answers. (i.e. 2-4)");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, question.Difficulty.ToString()))
+            if (!Validator.IsBoundedInteger(question.Difficulty, 1, 10))
             {
                 isValid = false;
                 errors.Add("Difficulty is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, question.Question.ToString()))
+            if (!Validator.Item(ValidatorType.AnyValue, question.Question.ToString()))
             {
                 isValid = false;
                 errors.Add("Question text is required.");

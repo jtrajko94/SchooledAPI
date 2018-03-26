@@ -10,13 +10,13 @@ namespace SchooledAPI.Controllers
     public class SubjectController : ApiController
     {
         /*
-         * .../subject/get/ [HttpGet]
+         * .../subject/get/?id= [HttpGet]
          * Description: Get a subject with the id, or all if null
          * Parameters: id (The id of the subject)
          * Result: APIResponseData with a single or all subjects
          */
         [HttpGet]
-        public APIResponseData Get(Guid? id = null)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -37,17 +37,18 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../subject/merge/ [HttpPost]
+         * .../subject/merge/?subjectjson= [HttpPost]
          * Description: Edit or Insert a subject, based on if an ID is a match or not
          * Parameters: subject (A subject object)
          * Result: APIResponseData with the Guid of the subject
          */
         [HttpPost]
-        public APIResponseData Merge(SubjectData subject)
+        public APIResponseData Merge(string subjectjson)
         {
             try
             {
-                using (var sql = new SqlData.Record<SubjectData>())
+                SubjectData subject = JsonConvert.DeserializeObject<SubjectData>(subjectjson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse response = SubjectService.IsValid(subject);
                     if (response.IsValid)
@@ -56,11 +57,10 @@ namespace SchooledAPI.Controllers
                         {
                             SubjectRowKey = subject.SubjectRowKey,
                             Name = subject.Name,
-                            Image = subject.Image,
-                            Timestamp = DateTime.Now
+                            Image = subject.Image
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeSubject, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {

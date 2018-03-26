@@ -10,13 +10,13 @@ namespace SchooledAPI.Controllers
     public class SchoolController : ApiController
     {
         /*
-         * .../school/get/ [HttpGet]
+         * .../school/get/?id= [HttpGet]
          * Description: Get a specific school by ID
          * Parameters: id (a school object)
          * Result: APIResponseData of the school object 
          */
         [HttpGet]
-        public APIResponseData Get(string id = null)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -45,13 +45,13 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-        * .../school/merge/ [HttpPost]
+        * .../school/merge/?schooljson= [HttpPost]
         * Description: Pass a school object to either create or update a school based on the Row Key
         * Parameters: schooljson (a school object json)
         * Result: APIResponse of the Guid of the inserted/edited school
         */
         [HttpPost]
-        public APIResponseData Merge(string schooljson = null)
+        public APIResponseData Merge(string schooljson)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace SchooledAPI.Controllers
                             StudentCount = school.StudentCount
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeSchool, parameters);
-                        return new APIResponseData { status = "Success", description = sql.Run().ToString() };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
@@ -93,7 +93,7 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../school/search/ [HttpGet]
+         * .../school/search/?schooltypeid=&name=&state=&district=&country= [HttpGet]
          * Description: Get a specific school by searching
          * Parameters: schooltypeid, name(uses LIKE, can be used as a search term), state, district, country (all strings)
          * Result: APIResponseData of the schools with the given criteria
@@ -124,7 +124,7 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../school/getschooltype/ [HttpGet]
+         * .../school/getschooltype/?id= [HttpGet]
          * Description: Get the school type record with a given Id, all school types if empty
          * Parameters: id (school type id)
          * Result: APIResponse of the School Type with that id, or all of them

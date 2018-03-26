@@ -11,6 +11,12 @@ namespace SchooledAPI.Services
             List<string> errors = new List<string>();
             bool isValid = true;
 
+            if (subject.SubjectRowKey != null && !Validator.IsValidGuid(subject.SubjectRowKey))
+            {
+                isValid = false;
+                errors.Add("Subject ID is invalid. Can enter null if inserting.");
+            }
+
             if (!Validator.Item(ValidatorType.AnyValue, subject.Name))
             {
                 isValid = false;

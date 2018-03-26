@@ -33,31 +33,28 @@ namespace SchooledAPI
             routes.MapHttpRoute("GetAdminUserByLogin", "adminuser/getbylogin", new { controller = "AdminUser", action = "GetByLogin" });
             routes.MapHttpRoute("MergeAdminUser", "adminuser/merge", new { controller = "AdminUser", action = "Merge" });
 
-            //SUBJECTS
+            //SUBJECTS - 1 Formatting/SQL/Test
             routes.MapHttpRoute("GetSubject", "subject/get", new { controller = "Subject", action = "Get" });
             routes.MapHttpRoute("MergeSubject", "subject/merge", new { controller = "Subject", action = "Merge" });
 
-            //COURSES - HERE
-            routes.MapHttpRoute("GetCourse", "course/getcourse", new { controller = "Course", action = "GetCourse" });
-            routes.MapHttpRoute("DeleteCourse", "course/deletecourse", new { controller = "Course", action = "DeleteCourse" });
-            routes.MapHttpRoute("MergeCourse", "course/mergecourse", new { controller = "Course", action = "MergeCourse" });
-            routes.MapHttpRoute("GetSubjectCourses", "course/getsubjectcourses", new { controller = "Course", action = "GetSubjectCourses" });
+            //COURSES - 2 Formatting/SQL/Test
+            routes.MapHttpRoute("GetCourse", "course/get", new { controller = "Course", action = "Get" });
+            routes.MapHttpRoute("MergeCourse", "course/merge", new { controller = "Course", action = "Merge" });
+            routes.MapHttpRoute("GetSubjectCourses", "course/getbysubject", new { controller = "Course", action = "GetBySubject" });
 
-            //QUESTIONS
-            routes.MapHttpRoute("GetQuestions", "question/getquestion", new { controller = "Question", action = "GetQuestion" });
-            routes.MapHttpRoute("DeleteQuestions", "question/deletequestion", new { controller = "Question", action = "DeleteQuestion" });
-            routes.MapHttpRoute("MergeQuestion", "question/mergequestion", new { controller = "Question", action = "MergeQuestion" });
-            routes.MapHttpRoute("GetCourseQuestion", "question/getcoursequestions", new { controller = "Question", action = "GetCourseQuestions" });
-            routes.MapHttpRoute("GetCollectionQuestions", "question/getcollectionquestions", new { controller = "Question", action = "GetCollectionQuestions" });
+            //COLLECTIONS - 3
+            routes.MapHttpRoute("GetCollection", "collection/get", new { controller = "Collection", action = "Get" });
+            routes.MapHttpRoute("MergeCollection", "collection/merge", new { controller = "Collection", action = "Merge" });
+
+            //QUESTIONS - 4 Formatting/SQL/Test (add 2,3,4 response question for testing)
+            routes.MapHttpRoute("GetQuestions", "question/get", new { controller = "Question", action = "Get" });
+            routes.MapHttpRoute("MergeQuestion", "question/merge", new { controller = "Question", action = "Merge" });
+            routes.MapHttpRoute("SearchQuestion", "question/search", new { controller = "Question", action = "Search" });
 
             //RESPONSES
             routes.MapHttpRoute("GetResponse", "response/getresponse", new { controller = "Response", action = "GetResponse" });
             routes.MapHttpRoute("MergeResponse", "response/mergequestion", new { controller = "Response", action = "MergeResponse" });
             routes.MapHttpRoute("GetQuestionResponses", "response/getquestionresponses", new { controller = "Response", action = "GetQuestionResponses" });
-
-            //COLLECTIONS
-            routes.MapHttpRoute("GetCollection", "collection/getcollection", new { controller = "Collection", action = "GetCollection" });
-            routes.MapHttpRoute("MergeCollection", "collection/mergecollection", new { controller = "Collection", action = "MergeCollection" });
 
             //GAMES
             routes.MapHttpRoute("GetGame", "game/getgame", new { controller = "Game", action = "GetGame" });
@@ -85,10 +82,6 @@ namespace SchooledAPI
             routes.MapHttpRoute("MergeSchoolScore", "schoolscore/mergeschoolscore", new { controller = "SchoolScore", action = "MergeSchoolScore" });
             routes.MapHttpRoute("GetSchoolCompetitionScores", "schoolscore/getschoolcompetitionscores", new { controller = "SchoolScore", action = "GetSchoolCompetitionScores" });
             routes.MapHttpRoute("GetTopTenCompetitionSchools", "schoolscore/gettoptencompetitionschools", new { controller = "SchoolScore", action = "GetTopTenCompetitionSchools" });
-
-            //TEST
-            routes.MapHttpRoute("CreateUser", "test/createuser", new { controller = "Test", action = "CreateUser" });
-            routes.MapHttpRoute("CreateAdminUser", "test/createadminuser", new { controller = "Test", action = "CreateAdminUser" });
         }
 
         protected void Application_Start()

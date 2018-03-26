@@ -9,5 +9,6 @@ namespace SchooledAPI.Data
         public string Image { get; set; }
         public bool? IsTextbook { get; set; }
         public DateTime? Timestamp { get; set; }
+        public DateTime? CreatedOn { get; set; }
     }
 }

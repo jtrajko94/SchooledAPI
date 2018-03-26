@@ -12,33 +12,26 @@
             GetUser,
             GetUserByLogin,
             MergeUser,
-            DeleteUser,
             GetUserType,
-            MergeUserType,
 
             //ADMINUSERS
             GetAdminUser,
             GetAdminUserByLogin,
             MergeAdminUser,
-            DeleteAdminUser,
 
             //SUBJECTS
             GetSubject,
             MergeSubject,
-            DeleteSubject,
 
             //COURSES
             GetCourse,
             MergeCourse,
-            DeleteCourse,
-            GetSubjectCourses,
+            GetBySubject,
 
             //QUESTIONS
             GetQuestion,
             MergeQuestion,
-            DeleteQuestion,
-            GetCourseQuestions,
-            GetCollectionQuestions,
+            SearchQuestion,
 
             //RESPONSE
             GetResponse,
