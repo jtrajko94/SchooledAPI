@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="SampleJsons\adminuser.txt" />
     <Content Include="SampleJsons\school.txt" />
     <Content Include="SampleJsons\user.txt" />
     <Content Include="Web.config">

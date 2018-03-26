@@ -12,15 +12,15 @@ namespace SchooledAPI.Controllers
         /*
          * .../adminuser/get/ [HttpGet]
          * Description: Get an Admin User with an ID
-         * Parameters: id (Guid of an Admin User), pass null for all admin users
+         * Parameters: id (id of an Admin User), pass null for all admin users
          * Result: APIResponseData with the full Admin User object
          */
         [HttpGet]
-        public APIResponseData Get(Guid? id = null)
+        public APIResponseData Get(string id)
         {
             try
             {
-                using (var sql = new SqlData.Record<AdminUserData>())
+                using (var sql = new SqlData.Records<AdminUserData>())
                 {
                     var parameters = new
                     {
@@ -54,7 +54,7 @@ namespace SchooledAPI.Controllers
                         var parameters = new
                         {
                             Email = email,
-                            Password = password
+                            Password = BCrypt.Net.BCrypt.HashPassword(password, Settings.AdminBcryptSalt),
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetAdminUserByLogin, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -75,28 +75,27 @@ namespace SchooledAPI.Controllers
         /*
          * .../adminuser/merge/ [HttpPost]
          * Description: Pass an admin user object to either create or update an admin user based on the Row Key
-         * Parameters: user (an admin user object)
+         * Parameters: admin user json (an admin user object)
          * Result: APIResponse of the Guid of the inserted/edited admin user
          */
         [HttpPost]
-        public APIResponseData Merge(AdminUserData user)
+        public APIResponseData Merge(string adminuserjson = null)
         {
             try
             {
-                using (var sql = new SqlData.Record<Guid>())
+                AdminUserData user = JsonConvert.DeserializeObject<AdminUserData>(adminuserjson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse response = AdminUserService.IsValid(user);
                     if (response.IsValid)
                     {
                         var parameters = new
                         {
-                            UserRowKey = user.AdminUserRowKey,
+                            AdminUserRowKey = user.AdminUserRowKey,
                             Email = user.Email,
-                            Password = user.Password,
+                            Password = BCrypt.Net.BCrypt.HashPassword(user.Password, Settings.AdminBcryptSalt),
                             FirstName = user.FirstName,
-                            LastName = user.LastName,
-                            Timestamp = DateTime.Now,
-                            CreatedOn = user.CreatedOn
+                            LastName = user.LastName
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeAdminUser, parameters);
                         return new APIResponseData { status = "Success", description = sql.Run().ToString() };

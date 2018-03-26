@@ -8,7 +8,9 @@
   "FirstName": null,
   "LastName": null,
   "IsFacebook": null,
-  "GameDifficulty": null
+  "GameDifficulty": null,
+  "Timestamp": null,
+  "CreatedOn": null
 }
 
 //Insert

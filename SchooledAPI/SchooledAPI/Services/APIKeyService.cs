@@ -13,7 +13,12 @@ namespace SchooledAPI.Services
             {
                 using (var sql = new SqlData.Record<Guid>())
                 {
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.CreateAPIKey);
+                    var parameters = new
+                    {
+                        CreatedDate = DateTime.Now,
+                        ExpiredDate = DateTime.Now.AddMinutes(5)
+                    };
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.CreateAPIKey, parameters);
                     return new APIResponseData { status = "Success", description = sql.Run().ToString() };
                 }
             }

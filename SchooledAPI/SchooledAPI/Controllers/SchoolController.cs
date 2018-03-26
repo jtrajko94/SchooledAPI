@@ -98,7 +98,7 @@ namespace SchooledAPI.Controllers
          * Parameters: schooltypeid, name(uses LIKE, can be used as a search term), state, district, country (all strings)
          * Result: APIResponseData of the schools with the given criteria
          */
-        [HttpPost]
+        [HttpGet]
         public APIResponseData Search(string schooltypeid = null, string name = null, string state = null, string district = null, string country = null)
         {
             try

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace SchooledAPI.Utilities
 {
@@ -47,6 +44,15 @@ namespace SchooledAPI.Utilities
             return false;
         }
 
+        public static bool IsValidPassword(string password)
+        {
+            if(!string.IsNullOrEmpty(password) && password.Length >= 5 && password.Length <= 25)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static bool Item(ValidatorType type, string value)
         {
 
@@ -56,24 +62,12 @@ namespace SchooledAPI.Utilities
                     return ZipUS(value);
                 case ValidatorType.ZipCanada:
                     return ZipCanada(value);
-                case ValidatorType.Password:
-                    return Password(value);
                 case ValidatorType.PhoneUS:
                     return PhoneUS(value);
-                case ValidatorType.Date:
-                    return Date(value);
-                case ValidatorType.FutureDate:
-                    return FutureDate(value);
                 case ValidatorType.FirstAndLastName:
                     return FirstAndLastName(value);
                 case ValidatorType.Email:
                     return Email(value);
-                case ValidatorType.Double:
-                    return IsDouble(value);
-                case ValidatorType.IP:
-                    return IsIP(value);
-                case ValidatorType.Integer:
-                    return IsInteger(value);
                 case ValidatorType.AnyValue:
                     return !String.IsNullOrEmpty(value);
                 case ValidatorType.Blank:
@@ -100,11 +94,6 @@ namespace SchooledAPI.Utilities
             return IsMatch(@"^([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ])\ {0,1}((\d[ABCEGHJKLMNPRSTVWXYZ]\d)|)$", subject.ToUpper());
         }
 
-        private static bool Password(string subject)
-        {
-            return IsMatch("^(?=.{8,})(?=.*[0-9].*)(?=.*[a-z].*).*$", subject);
-        }
-
         private static bool PhoneUS(string subject)
         {
             return IsMatch("^(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$", subject);
@@ -114,57 +103,7 @@ namespace SchooledAPI.Utilities
         {
             return IsMatch("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", subject);
         }
-
-        private static bool IsDouble(string subject)
-        {
-            double val;
-            return Double.TryParse(subject, out val);
-        }
-
-        private static bool IsInteger(string subject)
-        {
-            int val;
-            return Int32.TryParse(subject, out val);
-        }
-
-        private static bool IsIP(string subject)
-        {
-            return IsMatch(@"^[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}?", subject);
-        }
-
-        private static bool Date(string subject)
-        {
-            try
-            {
-                DateTime d = DateTime.Parse(subject);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private static bool FutureDate(string subject)
-        {
-            try
-            {
-                DateTime d = DateTime.Parse(subject);
-                if (d > DateTime.Now)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
+        
         private static bool FirstAndLastName(string subject)
         {
             if (string.IsNullOrEmpty(subject))

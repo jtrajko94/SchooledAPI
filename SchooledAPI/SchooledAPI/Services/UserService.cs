@@ -35,10 +35,10 @@ namespace SchooledAPI.Services
                 errors.Add("Email is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Password, user.Password))
+            if (!Validator.IsValidPassword(user.Password))
             {
                 isValid = false;
-                errors.Add("Password is required.");
+                errors.Add("Password of lengths 5-25 is required.");
             }
 
             if (!Validator.Item(ValidatorType.FirstAndLastName, user.FirstName + " " + user.LastName))
