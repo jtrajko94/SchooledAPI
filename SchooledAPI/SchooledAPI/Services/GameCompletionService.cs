@@ -10,6 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
+
+            if (gameCompletion.GameCompletionRowKey != null && !Validator.IsValidGuid(gameCompletion.GameCompletionRowKey))
+            {
+                isValid = false;
+                errors.Add("Game Completion ID is invalid. Can enter null if inserting.");
+            }
+
             if (!Validator.Item(ValidatorType.AnyValue, gameCompletion.CompetitionRowKey))
             {
                 isValid = false;
@@ -34,22 +41,22 @@ namespace SchooledAPI.Services
                 errors.Add("User Id is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, gameCompletion.Difficulty.ToString()))
+            if (!Validator.IsBoundedInteger(gameCompletion.Difficulty, 1, 10))
             {
                 isValid = false;
-                errors.Add("Difficulty is required.");
+                errors.Add("Difficulty is required. (1-10)");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, gameCompletion.RaffelTickets.ToString()))
+            if (!Validator.IsBoundedInteger(gameCompletion.RaffelTickets, 0, int.MaxValue))
             {
                 isValid = false;
-                errors.Add("Raffel Ticket Count is required.");
+                errors.Add("Raffel Ticket Count is required. (0-infinity");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, gameCompletion.Points.ToString()))
+            if (!Validator.IsBoundedInteger(gameCompletion.Points, 0, int.MaxValue))
             {
                 isValid = false;
-                errors.Add("Points Count is required.");
+                errors.Add("Points Count is required.(0-infinity)");
             }
 
             return new APIValidatorResponse { IsValid = isValid, Errors = errors };

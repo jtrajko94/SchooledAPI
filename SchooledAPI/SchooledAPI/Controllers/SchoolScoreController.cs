@@ -9,14 +9,20 @@ namespace SchooledAPI.Controllers
 {
     public class SchoolScoreController : ApiController
     {
+        /*
+         * .../schoolscore/get/?id= [HttpGet]
+         * Description: Get a school score with an ID
+         * Parameters: id (id of a school score)
+         * Result: APIResponseData with the full school score object
+         */
         [HttpGet]
-        public static APIResponseData GetSchoolScore(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
                 if (id != null)
                 {
-                    using (var sql = new SqlData.Record<RaffelEntryData>())
+                    using (var sql = new SqlData.Record<SchoolScoreData>())
                     {
                         var parameters = new
                         {
@@ -38,12 +44,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../schoolscore/merge/?schoolscorejson= [HttpPost]
+         * Description: Pass a school score object to either create or update a school score based on the Row Key
+         * Parameters: schoolscorejson (a school score object)
+         * Result: APIResponse of the Guid of the inserted/edited school score
+         */
         [HttpPost]
-        public static APIResponseData MergeSchoolScore(SchoolScoreData schoolScore)
+        public static APIResponseData Merge(string schoolscorejson)
         {
             try
             {
-                using (var sql = new SqlData.Record<SchoolScoreData>())
+                SchoolScoreData schoolScore = JsonConvert.DeserializeObject<SchoolScoreData>(schoolscorejson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse validatorResponse = SchoolScoreService.IsValid(schoolScore);
                     if (validatorResponse.IsValid)
@@ -53,11 +66,10 @@ namespace SchooledAPI.Controllers
                             SchoolScoreRowKey = schoolScore.SchoolScoreRowKey,
                             CompetitionRowKey = schoolScore.CompetitionRowKey,
                             SchoolRowKey = schoolScore.SchoolRowKey,
-                            Points = schoolScore.Points,
-                            Timestamp = DateTime.Now
+                            Points = schoolScore.Points
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeSchoolScore, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
@@ -72,21 +84,27 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../schoolscore/getbyschoolcompetition/?schoolid=&competitionid= [HttpGet]
+         * Description: a schools points on a particular competition
+         * Parameters: schoolid, competitionid
+         * Result: APIResponseData with the competition score of a school
+         */
         [HttpGet]
-        public static APIResponseData GetSchoolCompetitionScores(string schoolId, string competitionId)
+        public static APIResponseData GetBySchoolCompetition(string schoolid, string competitionid)
         {
             try
             {
-                if (schoolId != null && competitionId != null)
+                if (schoolid != null && competitionid != null)
                 {
-                    using (var sql = new SqlData.Records<SchoolScoreData>())
+                    using (var sql = new SqlData.Record<SchoolScoreData>())
                     {
                         var parameters = new
                         {
-                            SchoolRowKey = schoolId,
-                            CompetitionRowKey = competitionId
+                            SchoolRowKey = schoolid,
+                            CompetitionRowKey = competitionid
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSchoolCompetitionScores, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSchoolScoresBySchoolCompetition, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }
@@ -101,26 +119,34 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../schoolscore/getwinning/?competitionid=&state=&count= [HttpGet]
+         * Description: Get X places of winning schools
+         * Parameters: state, competitionid, amount of records
+         * Result: APIResponseData with the full winning school score objects
+         */
         [HttpGet]
-        public static APIResponseData GetTopTenCompetitionSchools(string competitionId)
+        public static APIResponseData GetWinning(string competitionId, string state, int? count)
         {
             try
             {
-                if (competitionId != null)
+                if (competitionId != null && state != null && count != null)
                 {
                     using (var sql = new SqlData.Records<SchoolScoreData>())
                     {
                         var parameters = new
                         {
-                            CompetitionRowKey = competitionId
+                            CompetitionRowKey = competitionId,
+                            State = state,
+                            RankingAmount = count
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetTopTenCompetitionSchools, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetWinningSchoolScore, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }
                 else
                 {
-                    return new APIResponseData { status = "Failed", description = "Please provide a Competition Id." };
+                    return new APIResponseData { status = "Failed", description = "Please provide a Competition Id, State, and Ranking Amount." };
                 }
             }
             catch (Exception err)

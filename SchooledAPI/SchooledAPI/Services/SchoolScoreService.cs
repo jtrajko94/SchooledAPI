@@ -10,6 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
+
+            if (schoolScore.SchoolScoreRowKey != null && !Validator.IsValidGuid(schoolScore.SchoolScoreRowKey))
+            {
+                isValid = false;
+                errors.Add("School Score ID is invalid. Can enter null if inserting.");
+            }
+
             if (!Validator.Item(ValidatorType.AnyValue, schoolScore.CompetitionRowKey))
             {
                 isValid = false;
@@ -22,7 +29,7 @@ namespace SchooledAPI.Services
                 errors.Add("School ID is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, schoolScore.Points.ToString()))
+            if (!Validator.IsBoundedInteger(schoolScore.Points, 0, int.MaxValue))
             {
                 isValid = false;
                 errors.Add("Point Count is required.");

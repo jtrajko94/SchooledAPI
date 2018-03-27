@@ -65,7 +65,7 @@ namespace SchooledAPI.Services
                 errors.Add("District is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, school.StudentCount.ToString()))
+            if (!Validator.IsBoundedInteger(school.StudentCount, 0, int.MaxValue))
             {
                 isValid = false;
                 errors.Add("Student Count is required/invalid.");

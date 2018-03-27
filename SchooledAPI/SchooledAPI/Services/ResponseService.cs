@@ -10,6 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
+
+            if (response.ResponseRowKey != null && !Validator.IsValidGuid(response.ResponseRowKey))
+            {
+                isValid = false;
+                errors.Add("Response ID is invalid. Can enter null if inserting.");
+            }
+
             if (!Validator.Item(ValidatorType.AnyValue, response.GameCompletionRowKey))
             {
                 isValid = false;
@@ -28,7 +35,7 @@ namespace SchooledAPI.Services
                 errors.Add("Question ID is required.");
             }
 
-            if(!Validator.Item(ValidatorType.Integer, response.ChosenAnswer.ToString()) && response.ChosenAnswer >= 1 && response.ChosenAnswer <= 4)
+            if(!Validator.IsBoundedInteger(response.ChosenAnswer, 1, 4))
             {
                 isValid = false;
                 errors.Add("Chosen answer is required.");

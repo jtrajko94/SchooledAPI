@@ -11,7 +11,18 @@ namespace SchooledAPI.Services
             List<string> errors = new List<string>();
             bool isValid = true;
 
-            if (competition.isIndividual)
+            if (competition.CompetitionRowKey != null && !Validator.IsValidGuid(competition.CompetitionRowKey))
+            {
+                isValid = false;
+                errors.Add("Competition ID is invalid. Can enter null if inserting.");
+            }
+
+            if (competition.isIndividual == null)
+            {
+                isValid = false;
+                errors.Add("Competition IsIndividual Id is required.");
+            }
+            else if (competition.isIndividual == true)
             {
                 if (!Validator.Item(ValidatorType.AnyValue, competition.UserTypeRowKey))
                 {

@@ -9,8 +9,14 @@ namespace SchooledAPI.Controllers
 {
     public class ResponseController : ApiController
     {
+        /*
+         * .../response/get/?id= [HttpGet]
+         * Description: Get a specific resoponse by ID
+         * Parameters: id (a response object)
+         * Result: APIResponseData of the response object 
+         */
         [HttpGet]
-        public static APIResponseData GetResponse(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
@@ -37,12 +43,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../response/merge/?responsejson= [HttpPost]
+         * Description: Pass a response object to either create or update a response based on the Row Key
+         * Parameters: response json (a response object)
+         * Result: APIResponse of the Guid of the inserted/edited response
+         */
         [HttpPost]
-        public static APIResponseData MergeResponse(ResponseData response)
+        public static APIResponseData Merge(string responsejson)
         {
             try
             {
-                using (var sql = new SqlData.Record<QuestionData>())
+                ResponseData response = JsonConvert.DeserializeObject<ResponseData>(responsejson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse validatorResponse = ResponseService.IsValid(response);
                     if (validatorResponse.IsValid)
@@ -54,11 +67,10 @@ namespace SchooledAPI.Controllers
                             QuestionRowKey = response.QuestionRowKey,
                             ChosenAnswer = response.ChosenAnswer,
                             IsCorrect = response.IsCorrect,
-                            UserRowKey = response.UserRowKey,
-                            Timestamp = DateTime.Now
+                            UserRowKey = response.UserRowKey
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeResponse, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
@@ -73,26 +85,26 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../response/search/?questionid=&userid= [HttpGet]
+         * Description: Get list of responses
+         * Parameters: questionid, userid
+         * Result: APIResponseData of the response with the given criteria
+         */
         [HttpGet]
-        public static APIResponseData GetQuestionResponses(int? questionId = null)
+        public APIResponseData Search(string questionid, string userid)
         {
             try
             {
-                if (questionId != null)
+                using (var sql = new SqlData.Records<ResponseData>())
                 {
-                    using (var sql = new SqlData.Records<CourseData>())
+                    var parameters = new
                     {
-                        var parameters = new
-                        {
-                            QuestionRowKey = questionId
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetQuestionResponses, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Please provide a Question Id." };
+                        QuestionRowKey = questionid,
+                        UserRowKey = userid
+                    };
+                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.SearchQuestion, parameters);
+                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                 }
             }
             catch (Exception err)

@@ -9,8 +9,14 @@ namespace SchooledAPI.Controllers
 {
     public class CompetitionController : ApiController
     {
+        /*
+         * .../competition/get/?id= [HttpGet]
+         * Description: Get a competition with an ID, or all with null
+         * Parameters: id (id of a competition)
+         * Result: APIResponseData with the full competition object
+         */
         [HttpGet]
-        public static APIResponseData GetCompetition(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
@@ -38,12 +44,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../competition/merge/?competitionjson= [HttpPost]
+         * Description: Pass a competition object to either create or update a competition based on the Row Key
+         * Parameters: competitionjson (a competition object)
+         * Result: APIResponse of the Guid of the inserted/edited competition
+         */
         [HttpPost]
-        public static APIResponseData MergeCompetition(CompetitionData competition)
+        public static APIResponseData Merge(string competitionjson)
         {
             try
             {
-                using (var sql = new SqlData.Record<CompetitionData>())
+                CompetitionData competition = JsonConvert.DeserializeObject<CompetitionData>(competitionjson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse validatorResponse = CompetitionService.IsValid(competition);
                     if (validatorResponse.IsValid)
@@ -68,12 +81,10 @@ namespace SchooledAPI.Controllers
                             PrizeThreeName = competition.PrizeThreeName,
                             SchoolTypeRowKey = competition.SchoolTypeRowKey,
                             State = competition.State,
-                            UserTypeRowKey = competition.UserTypeRowKey,
-                            IsActive = competition.IsActive,
-                            Timestamp = DateTime.Now
+                            UserTypeRowKey = competition.UserTypeRowKey
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeCompetition, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
@@ -88,49 +99,28 @@ namespace SchooledAPI.Controllers
             }
         }
 
-        [HttpPost]
-        public static APIResponseData DeactivateCompetition(int? id = null)
-        {
-            try
-            {
-                if (id != null)
-                {
-                    using (var sql = new SqlData.Command())
-                    {
-                        var parameters = new
-                        {
-                            CompetitionRowKey = id
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeactivateCompetition, parameters);
-                        return new APIResponseData { status = "Success", description = "Competition with ID: " + id + " has been deactivated" };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Competition Id is required" };
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
+        /*
+         * .../competition/getactive/?state=&isindividual= [HttpGet]
+         * Description: Get Active Competitions given the type and state
+         * Parameters: state and competitiontype
+         * Result: APIResponseData with the full active competition objects
+         */
         [HttpGet]
-        public static APIResponseData GetActiveCompetition(string state, bool? isIndividual = null)
+        public static APIResponseData GetActive(string state, bool? isindividual = null)
         {
             try
             {
-                if (isIndividual != null)
+                if (isindividual != null)
                 {
-                    using (var sql = new SqlData.Record<CompetitionData>())
+                    using (var sql = new SqlData.Records<CompetitionData>())
                     {
                         var parameters = new
                         {
                             State = state,
-                            IsIndividual = isIndividual
+                            IsIndividual = isindividual,
+                            CurrentDate = DateTime.Now
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetActiveCompetition, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetActiveCompetitions, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }

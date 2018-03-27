@@ -33,7 +33,7 @@ namespace SchooledAPI
             routes.MapHttpRoute("GetAdminUserByLogin", "adminuser/getbylogin", new { controller = "AdminUser", action = "GetByLogin" });
             routes.MapHttpRoute("MergeAdminUser", "adminuser/merge", new { controller = "AdminUser", action = "Merge" });
 
-            //SUBJECTS - 1 Formatting/SQL/Test
+            //SUBJECTS
             routes.MapHttpRoute("GetSubject", "subject/get", new { controller = "Subject", action = "Get" });
             routes.MapHttpRoute("MergeSubject", "subject/merge", new { controller = "Subject", action = "Merge" });
 
@@ -42,7 +42,7 @@ namespace SchooledAPI
             routes.MapHttpRoute("MergeCourse", "course/merge", new { controller = "Course", action = "Merge" });
             routes.MapHttpRoute("GetSubjectCourses", "course/getbysubject", new { controller = "Course", action = "GetBySubject" });
 
-            //COLLECTIONS - 3
+            //COLLECTIONS - 3 Formatting/SQL/Test
             routes.MapHttpRoute("GetCollection", "collection/get", new { controller = "Collection", action = "Get" });
             routes.MapHttpRoute("MergeCollection", "collection/merge", new { controller = "Collection", action = "Merge" });
 
@@ -51,37 +51,36 @@ namespace SchooledAPI
             routes.MapHttpRoute("MergeQuestion", "question/merge", new { controller = "Question", action = "Merge" });
             routes.MapHttpRoute("SearchQuestion", "question/search", new { controller = "Question", action = "Search" });
 
-            //RESPONSES
-            routes.MapHttpRoute("GetResponse", "response/getresponse", new { controller = "Response", action = "GetResponse" });
-            routes.MapHttpRoute("MergeResponse", "response/mergequestion", new { controller = "Response", action = "MergeResponse" });
-            routes.MapHttpRoute("GetQuestionResponses", "response/getquestionresponses", new { controller = "Response", action = "GetQuestionResponses" });
+            //RESPONSES - 5 Formatting/SQL/Test (add 2,3,4 response question for testing)
+            routes.MapHttpRoute("GetResponse", "response/get", new { controller = "Response", action = "Get" });
+            routes.MapHttpRoute("MergeResponse", "response/merge", new { controller = "Response", action = "Merge" });
+            routes.MapHttpRoute("SearchResponse", "response/search", new { controller = "Response", action = "Search" });
 
-            //GAMES
-            routes.MapHttpRoute("GetGame", "game/getgame", new { controller = "Game", action = "GetGame" });
-            routes.MapHttpRoute("MergeGame", "game/mergegame", new { controller = "Game", action = "MergeGame" });
-            routes.MapHttpRoute("DeleteGame", "game/deletegame", new { controller = "Game", action = "DeleteGame" });
+            //GAMES - 6 SAME
+            routes.MapHttpRoute("GetGame", "game/get", new { controller = "Game", action = "Get" });
+            routes.MapHttpRoute("MergeGame", "game/merge", new { controller = "Game", action = "Merge" });
 
-            //GAMECOMPLETIONS
-            routes.MapHttpRoute("GetGameCompletion", "gamecompletion/getgamecompletion", new { controller = "GameCompletion", action = "GetGameCompletion" });
-            routes.MapHttpRoute("MergeGameCompletion", "gamecompletion/mergegamecomplation", new { controller = "GameCompletion", action = "MergeGameCompletion" });
+            //GAMECOMPLETIONS - 8 Same
+            routes.MapHttpRoute("GetGameCompletion", "gamecompletion/get", new { controller = "GameCompletion", action = "Get" });
+            routes.MapHttpRoute("MergeGameCompletion", "gamecompletion/merge", new { controller = "GameCompletion", action = "Merge" });
+            routes.MapHttpRoute("SearchGameCompletion", "gamecompletion/search", new { controller = "GameCompletion", action = "Search" });
 
-            //COMPETITIONS
-            routes.MapHttpRoute("GetCompetition", "competition/getcompetition", new { controller = "Competition", action = "GetCompetition" });
-            routes.MapHttpRoute("MergeCompetition", "competition/mergecompetition", new { controller = "Competition", action = "MergeCompetition" });
-            routes.MapHttpRoute("DeactivateCompetition", "competition/deactivatecompetition", new { controller = "Competition", action = "DeactivateCompetition" });
-            routes.MapHttpRoute("GetActiveCompetition", "competition/getactivecompetition", new { controller = "Competition", action = "GetActiveCompetition" });
+            //COMPETITIONS - 7
+            routes.MapHttpRoute("GetCompetition", "competition/get", new { controller = "Competition", action = "Get" });
+            routes.MapHttpRoute("MergeCompetition", "competition/merge", new { controller = "Competition", action = "Merge" });
+            routes.MapHttpRoute("GetActiveCompetition", "competition/getactive", new { controller = "Competition", action = "GetActive" });
 
-            //RAFFELENTRIES
-            routes.MapHttpRoute("GetRaffelEntry", "raffelentry/getraffelentry", new { controller = "RaffelEntry", action = "GetRaffelEntry" });
-            routes.MapHttpRoute("MergeRaffelEntry", "raffelentry/mergeraffelentry", new { controller = "RaffelEntry", action = "MergeRaffelEntry" });
-            routes.MapHttpRoute("GetUserCompetitionRaffelEntry", "raffelentry/getusercompetitionraffelentry", new { controller = "RaffelEntry", action = "GetUserCompetitionRaffelEntry" });
-            routes.MapHttpRoute("GetWinningRaffelEntry", "raffelentry/getwinningraffelentry", new { controller = "RaffelEntry", action = "GetWinningRaffelEntry" });
+            //RAFFELENTRIES - 9
+            routes.MapHttpRoute("GetRaffelEntry", "raffelentry/get", new { controller = "RaffelEntry", action = "Get" });
+            routes.MapHttpRoute("MergeRaffelEntry", "raffelentry/merge", new { controller = "RaffelEntry", action = "Merge" });
+            routes.MapHttpRoute("GetUserCompetitionRaffelEntry", "raffelentry/getbyusercompetition", new { controller = "RaffelEntry", action = "GetByUserCompetition" });
+            routes.MapHttpRoute("GetWinningRaffelEntry", "raffelentry/getwinning", new { controller = "RaffelEntry", action = "GetWinning" });
 
-            //SCHOOLSCORES
-            routes.MapHttpRoute("GetSchoolScore", "schoolscore/getschoolscore", new { controller = "SchoolScore", action = "GetSchoolScore" });
-            routes.MapHttpRoute("MergeSchoolScore", "schoolscore/mergeschoolscore", new { controller = "SchoolScore", action = "MergeSchoolScore" });
-            routes.MapHttpRoute("GetSchoolCompetitionScores", "schoolscore/getschoolcompetitionscores", new { controller = "SchoolScore", action = "GetSchoolCompetitionScores" });
-            routes.MapHttpRoute("GetTopTenCompetitionSchools", "schoolscore/gettoptencompetitionschools", new { controller = "SchoolScore", action = "GetTopTenCompetitionSchools" });
+            //SCHOOLSCORES - 10
+            routes.MapHttpRoute("GetSchoolScore", "schoolscore/get", new { controller = "SchoolScore", action = "Get" });
+            routes.MapHttpRoute("MergeSchoolScore", "schoolscore/merge", new { controller = "SchoolScore", action = "Merge" });
+            routes.MapHttpRoute("GetSchoolCompetitionScores", "schoolscore/getbyschoolcompetition", new { controller = "SchoolScore", action = "GetBySchoolCompetition" });
+            routes.MapHttpRoute("GetTopTenCompetitionSchools", "schoolscore/getwinning", new { controller = "SchoolScore", action = "GetWinning" });
         }
 
         protected void Application_Start()

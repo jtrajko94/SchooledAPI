@@ -9,13 +9,8 @@ namespace SchooledAPI.Utilities
         ZipCanada,
         Password,
         PhoneUS,
-        Date,
-        FutureDate,
         FirstAndLastName,
         Email,
-        Integer,
-        Double,
-        IP,
         AnyValue,
         Blank
     }

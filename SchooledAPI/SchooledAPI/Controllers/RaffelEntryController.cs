@@ -9,8 +9,14 @@ namespace SchooledAPI.Controllers
 {
     public class RaffelEntryController : ApiController
     {
+        /*
+         * .../raffelentry/get/?id= [HttpGet]
+         * Description: Get a raffel entry with an ID
+         * Parameters: id (id of a raffel entry)
+         * Result: APIResponseData with the full raffel entry object
+         */
         [HttpGet]
-        public static APIResponseData GetRaffelEntry(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
@@ -38,12 +44,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../raffelentry/merge/?raffelentryjson= [HttpPost]
+         * Description: Pass a raffel entry object to either create or update a raffel entry based on the Row Key
+         * Parameters: raffelentryjson (a raffel entry object)
+         * Result: APIResponse of the Guid of the inserted/edited competition
+         */
         [HttpPost]
-        public static APIResponseData MergeRaffelEntry(RaffelEntryData raffelEntry)
+        public static APIResponseData Merge(string raffelentryjson)
         {
             try
             {
-                using (var sql = new SqlData.Record<RaffelEntryData>())
+                RaffelEntryData raffelEntry = JsonConvert.DeserializeObject<RaffelEntryData>(raffelentryjson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse validatorResponse = RaffelEntryService.IsValid(raffelEntry);
                     if (validatorResponse.IsValid)
@@ -53,11 +66,10 @@ namespace SchooledAPI.Controllers
                             RaffelEntryRowKey = raffelEntry.RaffelEntryRowKey,
                             CompetitionRowKey = raffelEntry.CompetitionRowKey,
                             UserRowKey = raffelEntry.UserRowKey,
-                            TicketCount = raffelEntry.TicketCount,
-                            Timestamp = DateTime.Now
+                            TicketCount = raffelEntry.TicketCount
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeRaffelEntry, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
@@ -72,8 +84,14 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../raffelentry/getactive/?userid=&competitionid= [HttpGet]
+         * Description: Get the entries of a user in a competition
+         * Parameters: userid and competitionid
+         * Result: APIResponseData with the raffel entries
+         */
         [HttpGet]
-        public static APIResponseData GetUserCompetitionRaffelEntry(string userId, string competitionId)
+        public static APIResponseData GetUserCompetition(string userId, string competitionId)
         {
             try
             {
@@ -86,7 +104,7 @@ namespace SchooledAPI.Controllers
                             UserRowKey = userId,
                             CompetitionRowKey = competitionId
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetUserCompetitionRaffelEntry, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetRaffelEntryByUserCompetition, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }
@@ -101,14 +119,20 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../raffelentry/getwinning/?competitionid= [HttpGet]
+         * Description: Get the winning raffel entry of a competition
+         * Parameters: competitionid
+         * Result: APIResponseData with the winning raffel entry
+         */
         [HttpGet]
-        public static APIResponseData GetWinningRaffelEntry(string competitionId)
+        public static APIResponseData GetWinning(string competitionId)
         {
             try
             {
                 if (competitionId != null)
                 {
-                    using (var sql = new SqlData.Records<RaffelEntryData>())
+                    using (var sql = new SqlData.Record<RaffelEntryData>())
                     {
                         var parameters = new
                         {

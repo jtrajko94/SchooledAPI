@@ -9,9 +9,10 @@ namespace SchooledAPI.Data
         public string GameRowKey { get; set; }
         public string CompetitionRowKey { get; set; }
         public string UserRowKey { get; set; }
-        public int Points { get; set; }
-        public int Difficulty { get; set; }
-        public int RaffelTickets { get; set; }
+        public int? Points { get; set; }
+        public int? Difficulty { get; set; }
+        public int? RaffelTickets { get; set; }
         public DateTime? Timestamp { get; set; }
+        public DateTime? CreatedOn { get; set; }
     }
 }

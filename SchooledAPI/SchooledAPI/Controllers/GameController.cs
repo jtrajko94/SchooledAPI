@@ -9,8 +9,14 @@ namespace SchooledAPI.Controllers
 {
     public class GameController : ApiController
     {
+        /*
+         * .../game/get/?id= [HttpGet]
+         * Description: Get a game with an ID, or all with null
+         * Parameters: id (id of a game), pass null for all games
+         * Result: APIResponseData with the full game object
+         */
         [HttpGet]
-        public static APIResponseData GetGame(int? id = null)
+        public static APIResponseData Get(string id)
         {
             try
             {
@@ -30,12 +36,19 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../game/merge/?gamejson= [HttpPost]
+         * Description: Pass a game object to either create or update a game based on the Row Key
+         * Parameters: gamejson (a game object)
+         * Result: APIResponse of the Guid of the inserted/edited game
+         */
         [HttpPost]
-        public static APIResponseData MergeGame(GameData game)
+        public static APIResponseData Merge(string gamejson)
         {
             try
             {
-                using (var sql = new SqlData.Record<GameData>())
+                GameData game = JsonConvert.DeserializeObject<GameData>(gamejson);
+                using (var sql = new SqlData.Record<string>())
                 {
                     APIValidatorResponse validatorResponse = GameService.IsValid(game);
                     if (validatorResponse.IsValid)
@@ -44,45 +57,16 @@ namespace SchooledAPI.Controllers
                         {
                             GameRowKey = game.GameRowKey,
                             Image = game.Image,
-                            Name = game.Name,
-                            Timestamp = DateTime.Now
+                            Name = game.Name
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.MergeGame, parameters);
-                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        return new APIResponseData { status = "Success", description = sql.Run() };
                     }
                     else
                     {
                         return new APIResponseData { status = "Failed : Validation", description = JsonConvert.SerializeObject(validatorResponse.Errors) };
                     }
 
-                }
-            }
-            catch (Exception err)
-            {
-                return new APIResponseData { status = "Failed", description = err.Message };
-            }
-        }
-
-        [HttpPost]
-        public static APIResponseData DeleteGame(int? id = null)
-        {
-            try
-            {
-                if (id != null)
-                {
-                    using (var sql = new SqlData.Command())
-                    {
-                        var parameters = new
-                        {
-                            GameRowKey = id
-                        };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.DeleteGame, parameters);
-                        return new APIResponseData { status = "Success", description = "Game with ID: " + id + " has been deleted" };
-                    }
-                }
-                else
-                {
-                    return new APIResponseData { status = "Failed", description = "Game Id is required" };
                 }
             }
             catch (Exception err)

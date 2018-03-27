@@ -36,14 +36,12 @@
             //RESPONSE
             GetResponse,
             MergeResponse,
-            GetQuestionResponses,
+            SearchResponse,
 
             //SCHOOLS
             GetSchool,
             MergeSchool,
-            DeleteSchool,
             GetSchoolType,
-            MergeSchoolType,
             SearchSchool,
 
             //COLLECTION
@@ -53,29 +51,28 @@
             //GAME
             GetGame,
             MergeGame,
-            DeleteGame,
 
             //GAMECOMPLETION
             GetGameCompletion,
             MergeGameCompletion,
+            SearchGameCompletion,
 
             //COMPETITIONS
             GetCompetition,
             MergeCompetition,
-            DeactivateCompetition,
-            GetActiveCompetition,
+            GetActiveCompetitions,
 
             //RAFFELENTRY
             GetRaffelEntry,
             MergeRaffelEntry,
-            GetUserCompetitionRaffelEntry,
+            GetRaffelEntryByUserCompetition,
             GetWinningRaffelEntry,
 
             //SCHOOLSCORES
             GetSchoolScore,
             MergeSchoolScore,
-            GetSchoolCompetitionScores,
-            GetTopTenCompetitionSchools
+            GetSchoolScoresBySchoolCompetition,
+            GetWinningSchoolScore
         }
     }
 }

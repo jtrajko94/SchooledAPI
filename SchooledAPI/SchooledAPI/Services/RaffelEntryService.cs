@@ -10,6 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
+
+            if (raffelEntry.RaffelEntryRowKey != null && !Validator.IsValidGuid(raffelEntry.RaffelEntryRowKey))
+            {
+                isValid = false;
+                errors.Add("Question ID is invalid. Can enter null if inserting.");
+            }
+
             if (!Validator.Item(ValidatorType.AnyValue, raffelEntry.CompetitionRowKey))
             {
                 isValid = false;
@@ -22,7 +29,7 @@ namespace SchooledAPI.Services
                 errors.Add("User ID is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Integer, raffelEntry.TicketCount.ToString()))
+            if (!Validator.IsBoundedInteger(raffelEntry.TicketCount, 0, int.MaxValue))
             {
                 isValid = false;
                 errors.Add("Ticket Count is required.");

@@ -10,6 +10,13 @@ namespace SchooledAPI.Services
         {
             List<string> errors = new List<string>();
             bool isValid = true;
+
+            if (game.GameRowKey != null && !Validator.IsValidGuid(game.GameRowKey))
+            {
+                isValid = false;
+                errors.Add("Game ID is invalid. Can enter null if inserting.");
+            }
+
             if (!Validator.Item(ValidatorType.AnyValue, game.Name))
             {
                 isValid = false;
