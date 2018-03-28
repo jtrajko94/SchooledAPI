@@ -26,7 +26,7 @@
             //COURSES
             GetCourse,
             MergeCourse,
-            GetBySubject,
+            GetCourseBySubject,
 
             //QUESTIONS
             GetQuestion,

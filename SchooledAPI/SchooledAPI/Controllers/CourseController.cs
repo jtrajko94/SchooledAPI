@@ -3,9 +3,6 @@ using SchooledAPI.Data;
 using SchooledAPI.Services;
 using SchooledAPI.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace SchooledAPI.Controllers
@@ -19,7 +16,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData of the course object 
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -46,7 +43,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited course
          */
         [HttpPost]
-        public static APIResponseData Merge(string coursejson)
+        public APIResponseData Merge(string coursejson = null)
         {
             try
             {
@@ -79,20 +76,26 @@ namespace SchooledAPI.Controllers
             }
         }
 
+        /*
+         * .../course/getbysubject/?subjectid= [HttpGet]
+         * Description: Get courses by subject
+         * Parameters: subjectid
+         * Result: APIResponseData of the associated courses
+         */
         [HttpGet]
-        public static APIResponseData GetBySubject(string subjectId)
+        public APIResponseData GetBySubject(string subjectid)
         {
             try
             {
-                if (subjectId != null)
+                if (subjectid != null)
                 {
                     using (var sql = new SqlData.Records<CourseData>())
                     {
                         var parameters = new
                         {
-                            SubjectRowKey = subjectId
+                            SubjectRowKey = subjectid
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetBySubject, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetCourseBySubject, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }
