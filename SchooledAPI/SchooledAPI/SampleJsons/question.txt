@@ -1,1 +1,46 @@
-﻿
+﻿//Template
+{ 
+  "QuestionRowKey": null,
+  "CourseRowKey": null,
+  "CollectionRowKey": null,
+  "TotalAnswers": null,
+  "Question": null,
+  "AnswerOne": null,
+  "AnswerTwo": null,
+  "AnswerThree": null,
+  "AnswerFour": null,
+  "Difficulty": null,
+  "CorrectAnswer": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{ 
+  "QuestionRowKey": null,
+  "CourseRowKey": "562FF6ED-962F-4B5F-96CA-1D029193C398",
+  "CollectionRowKey": "3F64304E-273F-40CF-A7E6-7C79757BCBBA",
+  "TotalAnswers": 4,
+  "Question": "How many pillows does Jerun sleep with?",
+  "AnswerOne": "One",
+  "AnswerTwo": "Two",
+  "AnswerThree": "Three",
+  "AnswerFour": "Four",
+  "Difficulty": 8,
+  "CorrectAnswer": 1
+}
+
+//Update
+{ 
+  "QuestionRowKey": "11275C6B-00FE-494B-863D-DD9800C549C0",
+  "CourseRowKey": "562FF6ED-962F-4B5F-96CA-1D029193C398",
+  "CollectionRowKey": "3F64304E-273F-40CF-A7E6-7C79757BCBBA",
+  "TotalAnswers": 4,
+  "Question": "How many pillows does Jerun sleep with?",
+  "AnswerOne": "One",
+  "AnswerTwo": "Two",
+  "AnswerThree": "Three",
+  "AnswerFour": "Four",
+  "Difficulty": 8,
+  "CorrectAnswer": 1
+}

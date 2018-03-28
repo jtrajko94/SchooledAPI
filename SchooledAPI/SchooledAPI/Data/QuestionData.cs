@@ -7,7 +7,7 @@ namespace SchooledAPI.Data
         public string QuestionRowKey { get; set; }
         public string CourseRowKey { get; set; }
         public string CollectionRowKey { get; set; }
-        public int TotalAnswers { get; set; }
+        public int? TotalAnswers { get; set; }
         public string Question { get; set; }
         public string AnswerOne { get; set; }
         public string AnswerTwo { get; set; }

@@ -16,13 +16,13 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData of the question object 
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
                 if(id != null)
                 {
-                    using (var sql = new SqlData.Records<QuestionData>())
+                    using (var sql = new SqlData.Record<QuestionData>())
                     {
                         var parameters = new
                         {
@@ -50,7 +50,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited question
          */
         [HttpPost]
-        public static APIResponseData Merge(string questionjson)
+        public APIResponseData Merge(string questionjson)
         {
             try
             {

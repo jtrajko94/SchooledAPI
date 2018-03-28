@@ -42,7 +42,8 @@ namespace SchooledAPI.Utilities
 
             if (!validKey)
             {
-                return httpRequestMessage.CreateResponse(HttpStatusCode.Forbidden, "Invalid API Key");
+                APIResponseData responseData = new APIResponseData{ status = "Failed", description = "Invalid API Key" };
+                return httpRequestMessage.CreateResponse(HttpStatusCode.Forbidden, JsonConvert.SerializeObject(responseData));
             }
 
             var finalResponse = await base.SendAsync(httpRequestMessage, cancellationToken);
