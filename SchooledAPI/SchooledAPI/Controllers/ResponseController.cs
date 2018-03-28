@@ -16,7 +16,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData of the response object 
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited response
          */
         [HttpPost]
-        public static APIResponseData Merge(string responsejson)
+        public APIResponseData Merge(string responsejson)
         {
             try
             {
@@ -96,16 +96,23 @@ namespace SchooledAPI.Controllers
         {
             try
             {
-                using (var sql = new SqlData.Records<ResponseData>())
+                if(questionid != null && userid != null)
                 {
-                    var parameters = new
+                    using (var sql = new SqlData.Records<ResponseData>())
                     {
-                        QuestionRowKey = questionid,
-                        UserRowKey = userid
-                    };
-                    sql.Action = () => sql.Execute(SqlProcedureData.Procedures.SearchQuestion, parameters);
-                    return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                        var parameters = new
+                        {
+                            QuestionRowKey = questionid,
+                            UserRowKey = userid
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.SearchQuestion, parameters);
+                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                    }
+                }else
+                {
+                    return new APIResponseData { status = "Failed", description = "Question Id and User Id is required." };
                 }
+                
             }
             catch (Exception err)
             {
