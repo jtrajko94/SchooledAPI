@@ -17,12 +17,12 @@ namespace SchooledAPI.Services
                 errors.Add("Competition ID is invalid. Can enter null if inserting.");
             }
 
-            if (competition.isIndividual == null)
+            if (competition.IsIndividual == null)
             {
                 isValid = false;
                 errors.Add("Competition IsIndividual Id is required.");
             }
-            else if (competition.isIndividual == true)
+            else if (competition.IsIndividual == true)
             {
                 if (!Validator.Item(ValidatorType.AnyValue, competition.UserTypeRowKey))
                 {

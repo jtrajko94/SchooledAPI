@@ -16,7 +16,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the full school score object
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited school score
          */
         [HttpPost]
-        public static APIResponseData Merge(string schoolscorejson)
+        public APIResponseData Merge(string schoolscorejson)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the competition score of a school
          */
         [HttpGet]
-        public static APIResponseData GetBySchoolCompetition(string schoolid, string competitionid)
+        public APIResponseData GetBySchoolCompetition(string schoolid, string competitionid)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the full winning school score objects
          */
         [HttpGet]
-        public static APIResponseData GetWinning(string competitionId, string state, int? count)
+        public APIResponseData GetWinning(string competitionId, string state, int? count)
         {
             try
             {

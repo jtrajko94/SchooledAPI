@@ -105,7 +105,7 @@ namespace SchooledAPI.Controllers
                             QuestionRowKey = questionid,
                             UserRowKey = userid
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.SearchQuestion, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.SearchResponse, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }else

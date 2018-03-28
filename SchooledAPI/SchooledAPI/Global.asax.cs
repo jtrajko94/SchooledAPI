@@ -51,21 +51,21 @@ namespace SchooledAPI
             routes.MapHttpRoute("MergeQuestion", "question/merge", new { controller = "Question", action = "Merge" });
             routes.MapHttpRoute("SearchQuestion", "question/search", new { controller = "Question", action = "Search" });
 
-            //RESPONSES - 5 Formatting/SQL/Test (add 2,3,4 response question for testing)
+            //RESPONSES
             routes.MapHttpRoute("GetResponse", "response/get", new { controller = "Response", action = "Get" });
             routes.MapHttpRoute("MergeResponse", "response/merge", new { controller = "Response", action = "Merge" });
             routes.MapHttpRoute("SearchResponse", "response/search", new { controller = "Response", action = "Search" });
 
-            //GAMES - 6 SAME
+            //GAMES
             routes.MapHttpRoute("GetGame", "game/get", new { controller = "Game", action = "Get" });
             routes.MapHttpRoute("MergeGame", "game/merge", new { controller = "Game", action = "Merge" });
 
-            //GAMECOMPLETIONS - 8 Same
+            //GAMECOMPLETIONS
             routes.MapHttpRoute("GetGameCompletion", "gamecompletion/get", new { controller = "GameCompletion", action = "Get" });
             routes.MapHttpRoute("MergeGameCompletion", "gamecompletion/merge", new { controller = "GameCompletion", action = "Merge" });
             routes.MapHttpRoute("SearchGameCompletion", "gamecompletion/search", new { controller = "GameCompletion", action = "Search" });
 
-            //COMPETITIONS - 7
+            //COMPETITIONS
             routes.MapHttpRoute("GetCompetition", "competition/get", new { controller = "Competition", action = "Get" });
             routes.MapHttpRoute("MergeCompetition", "competition/merge", new { controller = "Competition", action = "Merge" });
             routes.MapHttpRoute("GetActiveCompetition", "competition/getactive", new { controller = "Competition", action = "GetActive" });

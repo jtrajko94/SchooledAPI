@@ -16,7 +16,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the full competition object
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited competition
          */
         [HttpPost]
-        public static APIResponseData Merge(string competitionjson)
+        public APIResponseData Merge(string competitionjson)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace SchooledAPI.Controllers
                             Country = competition.Country,
                             Description = competition.Description,
                             EndDate = competition.EndDate,
-                            isIndividual = competition.isIndividual,
+                            IsIndividual = competition.IsIndividual,
                             Name = competition.Name,
                             PrizeOneCost = competition.PrizeOneCost,
                             PrizeOneImage = competition.PrizeOneImage,
@@ -106,7 +106,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the full active competition objects
          */
         [HttpGet]
-        public static APIResponseData GetActive(string state, bool? isindividual = null)
+        public APIResponseData GetActive(string state, bool? isindividual = null)
         {
             try
             {
@@ -117,8 +117,7 @@ namespace SchooledAPI.Controllers
                         var parameters = new
                         {
                             State = state,
-                            IsIndividual = isindividual,
-                            CurrentDate = DateTime.Now
+                            IsIndividual = isindividual
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetActiveCompetitions, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };

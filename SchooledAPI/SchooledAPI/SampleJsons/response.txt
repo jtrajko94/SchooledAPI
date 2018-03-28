@@ -1,1 +1,32 @@
-﻿
+﻿//Template
+{
+  "ResponseRowKey": null,
+  "GameCompletionRowKey": null,
+  "UserRowKey": null,
+  "QuestionRowKey": null,
+  "ChosenAnswer": null,
+  "IsCorrect": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "ResponseRowKey": null,
+  "GameCompletionRowKey": "D7A998EE-E531-49B3-BF44-DA76E8A5D16C",
+  "UserRowKey": "675B69E7-B24A-4E56-839C-1AE5B219EE7E",
+  "QuestionRowKey": "11275C6B-00FE-494B-863D-DD9800C549C0",
+  "ChosenAnswer": 3,
+  "IsCorrect": false
+}
+
+//Update
+{
+  "ResponseRowKey": "DB958B1E-2FFB-4BE5-A7A1-1F420BABDF35",
+  "GameCompletionRowKey": "D7A998EE-E531-49B3-BF44-DA76E8A5D16C",
+  "UserRowKey": "675B69E7-B24A-4E56-839C-1AE5B219EE7E",
+  "QuestionRowKey": "11275C6B-00FE-494B-863D-DD9800C549C0",
+  "ChosenAnswer": 3,
+  "IsCorrect": false
+}
+

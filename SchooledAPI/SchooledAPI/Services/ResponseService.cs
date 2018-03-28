@@ -29,7 +29,7 @@ namespace SchooledAPI.Services
                 errors.Add("User ID is required.");
             }
 
-            if (!Validator.Item(ValidatorType.Email, response.QuestionRowKey))
+            if (!Validator.Item(ValidatorType.AnyValue, response.QuestionRowKey))
             {
                 isValid = false;
                 errors.Add("Question ID is required.");

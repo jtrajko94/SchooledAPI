@@ -16,7 +16,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the full game completion object
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited game completion
          */
         [HttpPost]
-        public static APIResponseData Merge(string gamecompletionjson)
+        public APIResponseData Merge(string gamecompletionjson)
         {
             try
             {

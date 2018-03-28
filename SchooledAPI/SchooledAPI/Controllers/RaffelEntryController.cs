@@ -16,7 +16,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the full raffel entry object
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited competition
          */
         [HttpPost]
-        public static APIResponseData Merge(string raffelentryjson)
+        public APIResponseData Merge(string raffelentryjson)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the raffel entries
          */
         [HttpGet]
-        public static APIResponseData GetUserCompetition(string userId, string competitionId)
+        public APIResponseData GetUserCompetition(string userId, string competitionId)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData with the winning raffel entry
          */
         [HttpGet]
-        public static APIResponseData GetWinning(string competitionId)
+        public APIResponseData GetWinning(string competitionId)
         {
             try
             {

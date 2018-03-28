@@ -1,1 +1,22 @@
-﻿
+﻿//Template
+{
+  "GameRowKey": null,
+  "Name": null,
+  "Image": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "GameRowKey": null,
+  "Name": "Flappy Bird",
+  "Image": "www.google.com"
+}
+
+//Update
+{
+  "GameRowKey": "E2B9619D-0FDA-4DE9-A5E9-9D5E575E6AC8",
+  "Name": "Flappy Bird",
+  "Image": "www.google.com"
+}
