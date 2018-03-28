@@ -17,12 +17,6 @@ namespace SchooledAPI.Services
                 errors.Add("Collection ID is invalid. Can enter null if inserting.");
             }
 
-            if (!Validator.Item(ValidatorType.AnyValue, collection.CollectionRowKey))
-            {
-                isValid = false;
-                errors.Add("Collection ID is required.");
-            }
-
             if (!Validator.Item(ValidatorType.AnyValue, collection.Name))
             {
                 isValid = false;

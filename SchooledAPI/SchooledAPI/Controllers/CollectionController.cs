@@ -16,7 +16,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponseData of the collection object 
          */
         [HttpGet]
-        public static APIResponseData Get(string id)
+        public APIResponseData Get(string id)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace SchooledAPI.Controllers
          * Result: APIResponse of the Guid of the inserted/edited question
          */
         [HttpPost]
-        public static APIResponseData Merge(string collectionjson)
+        public APIResponseData Merge(string collectionjson)
         {
             try
             {

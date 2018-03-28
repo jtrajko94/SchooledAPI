@@ -37,7 +37,7 @@ namespace SchooledAPI
             routes.MapHttpRoute("GetSubject", "subject/get", new { controller = "Subject", action = "Get" });
             routes.MapHttpRoute("MergeSubject", "subject/merge", new { controller = "Subject", action = "Merge" });
 
-            //COURSES - 2 Formatting/SQL/Test
+            //COURSES
             routes.MapHttpRoute("GetCourse", "course/get", new { controller = "Course", action = "Get" });
             routes.MapHttpRoute("MergeCourse", "course/merge", new { controller = "Course", action = "Merge" });
             routes.MapHttpRoute("GetSubjectCourses", "course/getbysubject", new { controller = "Course", action = "GetBySubject" });
