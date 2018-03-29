@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class SchoolController : ApiController
     {
         /*
-         * .../school/get/?id= [HttpGet]
+         * .../school/get/?id= [HttpPost]
          * Description: Get a specific school by ID
          * Parameters: id (a school object)
          * Result: APIResponseData of the school object 
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -93,12 +93,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../school/search/?schooltypeid=&name=&state=&district=&country= [HttpGet]
+         * .../school/search/?schooltypeid=&name=&state=&district=&country= [HttpPost]
          * Description: Get a specific school by searching
          * Parameters: schooltypeid, name(uses LIKE, can be used as a search term), state, district, country (all strings)
          * Result: APIResponseData of the schools with the given criteria
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Search(string schooltypeid = null, string name = null, string state = null, string district = null, string country = null)
         {
             try
@@ -124,12 +124,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../school/getschooltype/?id= [HttpGet]
+         * .../school/getschooltype/?id= [HttpPost]
          * Description: Get the school type record with a given Id, all school types if empty
          * Parameters: id (school type id)
          * Result: APIResponse of the School Type with that id, or all of them
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData GetSchoolType(string id = null)
         {
             try

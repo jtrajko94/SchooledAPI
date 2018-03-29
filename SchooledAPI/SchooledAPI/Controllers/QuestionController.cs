@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class QuestionController : ApiController
     {
         /*
-         * .../question/get/?id= [HttpGet]
+         * .../question/get/?id= [HttpPost]
          * Description: Get a specific question by ID
          * Parameters: id (a question object)
          * Result: APIResponseData of the question object 
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -91,12 +91,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../question/search/?courseid=&collectionid=&count= [HttpGet]
+         * .../question/search/?courseid=&collectionid=&count= [HttpPost]
          * Description: Get list of questions
          * Parameters: courseid, collectionid, count (amount of records)
          * Result: APIResponseData of the questions with the given criteria
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Search(string courseid, string collectionid, int count = 10)
         {
             try

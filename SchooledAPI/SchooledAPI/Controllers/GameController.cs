@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class GameController : ApiController
     {
         /*
-         * .../game/get/?id= [HttpGet]
+         * .../game/get/?id= [HttpPost]
          * Description: Get a game with an ID, or all with null
          * Parameters: id (id of a game), pass null for all games
          * Result: APIResponseData with the full game object
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try

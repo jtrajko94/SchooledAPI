@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class ResponseController : ApiController
     {
         /*
-         * .../response/get/?id= [HttpGet]
+         * .../response/get/?id= [HttpPost]
          * Description: Get a specific resoponse by ID
          * Parameters: id (a response object)
          * Result: APIResponseData of the response object 
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -86,12 +86,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../response/search/?questionid=&userid= [HttpGet]
+         * .../response/search/?questionid=&userid= [HttpPost]
          * Description: Get list of responses
          * Parameters: questionid, userid
          * Result: APIResponseData of the response with the given criteria
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Search(string questionid, string userid)
         {
             try

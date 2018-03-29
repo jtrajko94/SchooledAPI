@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class CourseController : ApiController
     {
         /*
-         * .../course/get/?id= [HttpGet]
+         * .../course/get/?id= [HttpPost]
          * Description: Get a specific course by ID
          * Parameters: id (a course object)
          * Result: APIResponseData of the course object 
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -77,12 +77,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../course/getbysubject/?subjectid= [HttpGet]
+         * .../course/getbysubject/?subjectid= [HttpPost]
          * Description: Get courses by subject
          * Parameters: subjectid
          * Result: APIResponseData of the associated courses
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData GetBySubject(string subjectid)
         {
             try

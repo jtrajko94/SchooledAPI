@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class RaffelEntryController : ApiController
     {
         /*
-         * .../raffelentry/get/?id= [HttpGet]
+         * .../raffelentry/get/?id= [HttpPost]
          * Description: Get a raffel entry with an ID
          * Parameters: id (id of a raffel entry)
          * Result: APIResponseData with the full raffel entry object
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -85,24 +85,24 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../raffelentry/getactive/?userid=&competitionid= [HttpGet]
+         * .../raffelentry/getactive/?userid=&competitionid= [HttpPost]
          * Description: Get the entries of a user in a competition
          * Parameters: userid and competitionid
          * Result: APIResponseData with the raffel entries
          */
-        [HttpGet]
-        public APIResponseData GetUserCompetition(string userId, string competitionId)
+        [HttpPost]
+        public APIResponseData GetByUserCompetition(string userid, string competitionid)
         {
             try
             {
-                if (userId != null && competitionId != null)
+                if (userid != null && competitionid != null)
                 {
                     using (var sql = new SqlData.Records<RaffelEntryData>())
                     {
                         var parameters = new
                         {
-                            UserRowKey = userId,
-                            CompetitionRowKey = competitionId
+                            UserRowKey = userid,
+                            CompetitionRowKey = competitionid
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetRaffelEntryByUserCompetition, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
@@ -120,23 +120,23 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../raffelentry/getwinning/?competitionid= [HttpGet]
+         * .../raffelentry/getwinning/?competitionid= [HttpPost]
          * Description: Get the winning raffel entry of a competition
          * Parameters: competitionid
          * Result: APIResponseData with the winning raffel entry
          */
-        [HttpGet]
-        public APIResponseData GetWinning(string competitionId)
+        [HttpPost]
+        public APIResponseData GetWinning(string competitionid)
         {
             try
             {
-                if (competitionId != null)
+                if (competitionid != null)
                 {
-                    using (var sql = new SqlData.Record<RaffelEntryData>())
+                    using (var sql = new SqlData.Records<RaffelEntryData>())
                     {
                         var parameters = new
                         {
-                            CompetitionRowKey = competitionId
+                            CompetitionRowKey = competitionid
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetWinningRaffelEntry, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };

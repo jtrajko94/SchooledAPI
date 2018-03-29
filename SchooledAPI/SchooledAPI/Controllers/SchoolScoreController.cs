@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class SchoolScoreController : ApiController
     {
         /*
-         * .../schoolscore/get/?id= [HttpGet]
+         * .../schoolscore/get/?id= [HttpPost]
          * Description: Get a school score with an ID
          * Parameters: id (id of a school score)
          * Result: APIResponseData with the full school score object
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -85,12 +85,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../schoolscore/getbyschoolcompetition/?schoolid=&competitionid= [HttpGet]
+         * .../schoolscore/getbyschoolcompetition/?schoolid=&competitionid= [HttpPost]
          * Description: a schools points on a particular competition
          * Parameters: schoolid, competitionid
          * Result: APIResponseData with the competition score of a school
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData GetBySchoolCompetition(string schoolid, string competitionid)
         {
             try
@@ -104,7 +104,7 @@ namespace SchooledAPI.Controllers
                             SchoolRowKey = schoolid,
                             CompetitionRowKey = competitionid
                         };
-                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSchoolScoresBySchoolCompetition, parameters);
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetSchoolScoreBySchoolCompetition, parameters);
                         return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
                     }
                 }
@@ -120,24 +120,23 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../schoolscore/getwinning/?competitionid=&state=&count= [HttpGet]
+         * .../schoolscore/getwinning/?competitionid=&state=&count= [HttpPost]
          * Description: Get X places of winning schools
          * Parameters: state, competitionid, amount of records
          * Result: APIResponseData with the full winning school score objects
          */
-        [HttpGet]
-        public APIResponseData GetWinning(string competitionId, string state, int? count)
+        [HttpPost]
+        public APIResponseData GetWinning(string competitionId, int? count)
         {
             try
             {
-                if (competitionId != null && state != null && count != null)
+                if (competitionId != null && count != null)
                 {
                     using (var sql = new SqlData.Records<SchoolScoreData>())
                     {
                         var parameters = new
                         {
                             CompetitionRowKey = competitionId,
-                            State = state,
                             RankingAmount = count
                         };
                         sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetWinningSchoolScore, parameters);

@@ -7,24 +7,24 @@ namespace SchooledAPI.Controllers
     public class APIKeyController : ApiController
     {
         /*
-         * .../apikey/get/ [HttpGet]
+         * .../apikey/get/ [HttpPost]
          * Description: Get the details about an API Key
          * Parameters: key (The API key you would like further information on)
          * Result: APIResponseData with key information
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string key)
         {
             return APIKeyService.GetAPIKey(key);
         }
 
         /*
-         * .../apikey/create/ [HttpGet]
+         * .../apikey/create/ [HttpPost]
          * Description: Generate an API Key
          * Parameters: None
          * Result: APIResponseData with the Row Key of the API Key created
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Create()
         {
             return APIKeyService.CreateAPIKey();

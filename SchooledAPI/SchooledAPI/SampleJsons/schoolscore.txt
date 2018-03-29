@@ -1,1 +1,25 @@
-﻿
+﻿//Template
+{ 
+  "SchoolScoreRowKey": null,
+  "CompetitionRowKey": null,
+  "SchoolRowKey": null,
+  "Points": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{ 
+  "SchoolScoreRowKey": null,
+  "CompetitionRowKey": "0EE9BA2E-DB50-4FBF-85D2-414D0384CEFA",
+  "SchoolRowKey": "0422B35F-7214-4C25-9F08-72CDD14D5742",
+  "Points": 10
+}
+
+//Update
+{ 
+  "SchoolScoreRowKey": "B442CB22-F611-4DBF-B52E-7F3AD038E584",
+  "CompetitionRowKey": "0EE9BA2E-DB50-4FBF-85D2-414D0384CEFA",
+  "SchoolRowKey": "0422B35F-7214-4C25-9F08-72CDD14D5742",
+  "Points": 10
+}

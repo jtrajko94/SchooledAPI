@@ -71,7 +71,7 @@
             //SCHOOLSCORES
             GetSchoolScore,
             MergeSchoolScore,
-            GetSchoolScoresBySchoolCompetition,
+            GetSchoolScoreBySchoolCompetition,
             GetWinningSchoolScore
         }
     }

@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class CompetitionController : ApiController
     {
         /*
-         * .../competition/get/?id= [HttpGet]
+         * .../competition/get/?id= [HttpPost]
          * Description: Get a competition with an ID, or all with null
          * Parameters: id (id of a competition)
          * Result: APIResponseData with the full competition object
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -100,12 +100,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../competition/getactive/?state=&isindividual= [HttpGet]
+         * .../competition/getactive/?state=&isindividual= [HttpPost]
          * Description: Get Active Competitions given the type and state
          * Parameters: state and competitiontype
          * Result: APIResponseData with the full active competition objects
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData GetActive(string state, bool? isindividual = null)
         {
             try

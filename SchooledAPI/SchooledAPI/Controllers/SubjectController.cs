@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class SubjectController : ApiController
     {
         /*
-         * .../subject/get/?id= [HttpGet]
+         * .../subject/get/?id= [HttpPost]
          * Description: Get a subject with the id, or all if null
          * Parameters: id (The id of the subject)
          * Result: APIResponseData with a single or all subjects
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try

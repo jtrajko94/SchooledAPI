@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class CollectionController : ApiController
     {
         /*
-         * .../collection/get/?id= [HttpGet]
+         * .../collection/get/?id= [HttpPost]
          * Description: Get a specific collection by ID, all if null
          * Parameters: id (a collection object), all if null
          * Result: APIResponseData of the collection object 
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try

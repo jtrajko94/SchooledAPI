@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class GameCompletionController : ApiController
     {
         /*
-         * .../gamecompletion/get/?id= [HttpGet]
+         * .../gamecompletion/get/?id= [HttpPost]
          * Description: Get a game completion with an ID, or all with null
          * Parameters: id (id of a game completion), pass null for all game completions
          * Result: APIResponseData with the full game completion object
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -88,12 +88,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../response/search/?competitionid=&courseid=&userid=&gameid= [HttpGet]
+         * .../response/search/?competitionid=&courseid=&userid=&gameid= [HttpPost]
          * Description: Get list of game completions
          * Parameters: competitionid, courseid, userid, gameid
          * Result: APIResponseData of the game completion with the given criteria
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Search(string competitionid, string courseid, string userid, string gameid)
         {
             try

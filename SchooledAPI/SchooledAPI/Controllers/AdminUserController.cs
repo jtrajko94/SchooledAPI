@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class AdminUserController : ApiController
     {
         /*
-         * .../adminuser/get/?id= [HttpGet]
+         * .../adminuser/get/?id= [HttpPost]
          * Description: Get an Admin User with an ID
          * Parameters: id (id of an Admin User), pass null for all admin users
          * Result: APIResponseData with the full Admin User object
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -37,12 +37,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../adminuser/getbylogin/?email=&password= [HttpGet]
+         * .../adminuser/getbylogin/?email=&password= [HttpPost]
          * Description: Get an Admin User with login information
          * Parameters: email (The email of the admin user) and password (the password of the admin user)
          * Result: APIResponseData with the full Admin User Object
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData GetByLogin(string email, string password)
         {
             try

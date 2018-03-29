@@ -1,1 +1,26 @@
-﻿
+﻿//Template
+{
+  "RaffelEntryRowKey": null,
+  "UserRowKey": null,
+  "CompetitionRowKey": null,
+  "TicketCount": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "RaffelEntryRowKey": null,
+  "UserRowKey": "675B69E7-B24A-4E56-839C-1AE5B219EE7E",
+  "CompetitionRowKey": "0EE9BA2E-DB50-4FBF-85D2-414D0384CEFA",
+  "TicketCount": 10
+}
+
+//Update
+{
+  "RaffelEntryRowKey": "6690B463-E84E-4999-B23A-26C4C4C16DC1",
+  "UserRowKey": "675B69E7-B24A-4E56-839C-1AE5B219EE7E",
+  "CompetitionRowKey": "0EE9BA2E-DB50-4FBF-85D2-414D0384CEFA",
+  "TicketCount": 10
+}
+

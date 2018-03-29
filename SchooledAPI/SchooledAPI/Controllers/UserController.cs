@@ -10,12 +10,12 @@ namespace SchooledAPI.Controllers
     public class UserController : ApiController
     {
         /*
-         * .../user/get/?id= [HttpGet]
+         * .../user/get/?id= [HttpPost]
          * Description: Get a specific user by ID
          * Parameters: id (an user object)
          * Result: APIResponseData of the user object 
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData Get(string id)
         {
             try
@@ -44,12 +44,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../user/getbylogin/?email=&password= [HttpGet]
+         * .../user/getbylogin/?email=&password= [HttpPost]
          * Description: Get a specific user by their login
          * Parameters: email (the email of the user) and password (user's password)
          * Result: APIResponseData of the user object 
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData GetByLogin(string email, string password)
         {
             try
@@ -122,12 +122,12 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../user/getusertype/id= [HttpGet]
+         * .../user/getusertype/id= [HttpPost]
          * Description: Get the user type record with a given Id, all user types if null
          * Parameters: id (user type id)
          * Result: APIResponse of the User Type with that id, or all of them
          */
-        [HttpGet]
+        [HttpPost]
         public APIResponseData GetUserType(string id)
         {
             try
