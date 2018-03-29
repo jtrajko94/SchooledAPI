@@ -1,0 +1,37 @@
+﻿//Template
+{
+  "GameCompletionRowKey": null,
+  "CourseRowKey": null,
+  "GameRowKey": null,
+  "CompetitionRowKey": null,
+  "UserRowKey": null,
+  "Points": null,
+  "Difficulty": null,
+  "RaffelTickets": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "GameCompletionRowKey": null,
+  "CourseRowKey": "562FF6ED-962F-4B5F-96CA-1D029193C398",
+  "GameRowKey": "E2B9619D-0FDA-4DE9-A5E9-9D5E575E6AC8",
+  "CompetitionRowKey": "0EE9BA2E-DB50-4FBF-85D2-414D0384CEFA",
+  "UserRowKey": "675B69E7-B24A-4E56-839C-1AE5B219EE7E",
+  "Points": 10,
+  "Difficulty": 8,
+  "RaffelTickets": 5
+}
+
+//Update
+{
+  "GameCompletionRowKey": "D7A998EE-E531-49B3-BF44-DA76E8A5D16C",
+  "CourseRowKey": "562FF6ED-962F-4B5F-96CA-1D029193C398",
+  "GameRowKey": "E2B9619D-0FDA-4DE9-A5E9-9D5E575E6AC8",
+  "CompetitionRowKey": "0EE9BA2E-DB50-4FBF-85D2-414D0384CEFA",
+  "UserRowKey": "675B69E7-B24A-4E56-839C-1AE5B219EE7E",
+  "Points": 10,
+  "Difficulty": 8,
+  "RaffelTickets": 5
+}

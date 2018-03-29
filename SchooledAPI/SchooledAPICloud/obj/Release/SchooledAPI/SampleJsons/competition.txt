@@ -1,0 +1,70 @@
+﻿//Template
+{
+  "CompetitionRowKey": null,
+  "SchoolTypeRowKey": null,
+  "UserTypeRowKey": null,
+  "BeginDate": null,
+  "EndDate": null,
+  "PrizeOneName": null,
+  "PrizeOneCost": null,
+  "PrizeOneImage": null,
+  "PrizeTwoName": null,
+  "PrizeTwoCost": null,
+  "PrizeTwoImage": null,
+  "PrizeThreeName": null,
+  "PrizeThreeCost": null,
+  "PrizeThreeImage": null,
+  "State": null,
+  "Country": null,
+  "Name": null,
+  "Description": null,
+  "IsIndividual": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "CompetitionRowKey": null,
+  "SchoolTypeRowKey": "FE3B2875-D634-462B-9EAB-B0959594781E",
+  "UserTypeRowKey": "6047EA7C-CE2E-4DE9-9006-04A86F6BCC71",
+  "BeginDate": "2018-03-27 21:16:59.3100000",
+  "EndDate": "2018-04-28 21:16:59.3100000",
+  "PrizeOneName": "Ipad",
+  "PrizeOneCost": "$500",
+  "PrizeOneImage": "www.google.com",
+  "PrizeTwoName": "Phone",
+  "PrizeTwoCost": "$400",
+  "PrizeTwoImage": "www.bing.com",
+  "PrizeThreeName": "Toys",
+  "PrizeThreeCost": "200",
+  "PrizeThreeImage": "www.toys.com",
+  "State": "IL",
+  "Country": "US",
+  "Name": "First Competition",
+  "Description": "This is a sample competition.",
+  "IsIndividual": false
+}
+
+//Update
+{
+  "CompetitionRowKey": "0EE9BA2E-DB50-4FBF-85D2-414D0384CEFA",
+  "SchoolTypeRowKey": "FE3B2875-D634-462B-9EAB-B0959594781E",
+  "UserTypeRowKey": "6047EA7C-CE2E-4DE9-9006-04A86F6BCC71",
+  "BeginDate": "2018-03-27 21:16:59.3100000",
+  "EndDate": "2018-04-28 21:16:59.3100000",
+  "PrizeOneName": "Ipad",
+  "PrizeOneCost": "$500",
+  "PrizeOneImage": "www.google.com",
+  "PrizeTwoName": "Phone",
+  "PrizeTwoCost": "$400",
+  "PrizeTwoImage": "www.bing.com",
+  "PrizeThreeName": "Toys",
+  "PrizeThreeCost": "200",
+  "PrizeThreeImage": "www.toys.com",
+  "State": "IL",
+  "Country": "US",
+  "Name": "First Competition",
+  "Description": "This is a sample competition.",
+  "IsIndividual": false
+}

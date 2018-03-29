@@ -1,0 +1,25 @@
+﻿//Template
+{
+  "CourseRowKey": null,
+  "SubjectRowKey": null,
+  "Name": null,
+  "Image": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "CourseRowKey": null,
+  "SubjectRowKey": "01892D0A-A9BD-4127-A490-6581B7726BE3",
+  "Name": "Algebra",
+  "Image": "www.google.com"
+}
+
+//Update
+{
+  "CourseRowKey": "53AF20D1-8C7C-4822-9754-F893837C60ED",
+  "SubjectRowKey": "01892D0A-A9BD-4127-A490-6581B7726BE3",
+  "Name": "Algebra",
+  "Image": "www.google.com"
+}

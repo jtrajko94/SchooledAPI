@@ -1,0 +1,25 @@
+﻿//Template
+{ 
+  "CollectionRowKey": null,
+  "Name": null,
+  "Image": null,
+  "IsTextbook": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{ 
+  "CollectionRowKey": null,
+  "Name": "Book 1",
+  "Image": "www.google.com",
+  "IsTextbook": true
+}
+
+//Update
+{ 
+  "CollectionRowKey": "3F64304E-273F-40CF-A7E6-7C79757BCBBA",
+  "Name": "Book 1",
+  "Image": "www.google.com",
+  "IsTextbook": true
+}

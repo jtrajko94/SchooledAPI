@@ -1,0 +1,22 @@
+﻿//Template
+{ 
+  "SubjectRowKey": null,
+  "Name": null,
+  "Image": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{ 
+  "SubjectRowKey": null,
+  "Name": "Mathematics",
+  "Image": "www.google.com"
+}
+
+//Update
+{ 
+  "SubjectRowKey": "01892D0A-A9BD-4127-A490-6581B7726BE3",
+  "Name": "Mathematics",
+  "Image": "www.google.com"
+}

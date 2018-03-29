@@ -1,0 +1,40 @@
+﻿//Template
+{
+  "UserRowKey": null,
+  "UserTypeRowKey": null,
+  "SchoolRowKey": null,
+  "Email": null,
+  "Password": null,
+  "FirstName": null,
+  "LastName": null,
+  "IsFacebook": null,
+  "GameDifficulty": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "UserRowKey": null,
+  "UserTypeRowKey": "6047EA7C-CE2E-4DE9-9006-04A86F6BCC71",
+  "SchoolRowKey": "0422B35F-7214-4C25-9F08-72CDD14D5742",
+  "Email": "jerunt@gmail.com",
+  "Password": "ABC12345",
+  "FirstName": "Jerun",
+  "LastName": "Trajko",
+  "IsFacebook": false,
+  "GameDifficulty": 6
+}
+
+//Merge
+{
+  "UserRowKey": "675B69E7-B24A-4E56-839C-1AE5B219EE7E",
+  "UserTypeRowKey": "6047EA7C-CE2E-4DE9-9006-04A86F6BCC71",
+  "SchoolRowKey": "0422B35F-7214-4C25-9F08-72CDD14D5742",
+  "Email": "jerunt@gmail.com",
+  "Password": "ABC12345",
+  "FirstName": "Jerun",
+  "LastName": "Trajko",
+  "IsFacebook": false,
+  "GameDifficulty": 6
+}

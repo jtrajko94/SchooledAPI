@@ -1,0 +1,28 @@
+﻿//Template
+{
+  "AdminUserRowKey": null,
+  "Email": null,
+  "Password": null,
+  "FirstName": null,
+  "LastName": null,
+  "Timestamp": null,
+  "CreatedOn": null
+}
+
+//Insert
+{
+  "AdminUserRowKey": null,
+  "Email": "jerunt@gmail.com",
+  "Password": "ABC12345",
+  "FirstName": "Jerun",
+  "LastName": "Trajko"
+}
+
+//Update
+{
+  "AdminUserRowKey": "079A1B7C-AB58-4C5E-8138-714C4EEAD5E8",
+  "Email": "jerunt@gmail.com",
+  "Password": "ABC12345",
+  "FirstName": "Jerun S",
+  "LastName": "Trajko"
+}
