@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SchooledAPICloud" generation="1" functional="0" release="0" Id="965b815c-b823-453d-ac71-53fc795a2b70" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SchooledAPICloud" generation="1" functional="0" release="0" Id="7cb07cdc-c6ed-4480-b8a9-ded62894d289" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="SchooledAPICloudGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -70,9 +70,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="5781abdc-2b20-47ca-a53a-737b88c661a6" ref="Microsoft.RedDog.Contract\ServiceContract\SchooledAPICloudContract@ServiceDefinition">
+    <implementation Id="84335441-20c0-46c4-bd96-e8fd18d21262" ref="Microsoft.RedDog.Contract\ServiceContract\SchooledAPICloudContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="3d0e82d6-19f6-4981-91a0-7cffcbdcaf89" ref="Microsoft.RedDog.Contract\Interface\SchooledAPI:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="cab09a21-d240-4f54-b971-9dc5f3e5f272" ref="Microsoft.RedDog.Contract\Interface\SchooledAPI:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/SchooledAPICloud/SchooledAPICloudGroup/SchooledAPI:Endpoint1" />
           </inPort>
