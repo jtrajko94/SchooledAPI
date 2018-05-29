@@ -90,6 +90,7 @@ C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\obj\Debug\School
 C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\bin\BCrypt.Net.dll
 C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\bin\BCrypt.Net.xml
 C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\Khan\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\SchooledAPI.dll.config
 C:\Users\Khan\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\SchooledAPI.dll
 C:\Users\Khan\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\SchooledAPI.pdb
@@ -112,3 +113,6 @@ C:\Users\Khan\Documents\SchooledAPI\SchooledAPI\SchooledAPI\bin\System.Web.Http.
 C:\Users\Khan\Documents\SchooledAPI\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.csprojResolveAssemblyReference.cache
 C:\Users\Khan\Documents\SchooledAPI\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.dll
 C:\Users\Khan\Documents\SchooledAPI\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.pdb
+=======
+D:\Schooled\SchooledAPI2\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.csprojResolveAssemblyReference.cache
+>>>>>>> 56d967384362a081a487f91dadb5b9046350435d

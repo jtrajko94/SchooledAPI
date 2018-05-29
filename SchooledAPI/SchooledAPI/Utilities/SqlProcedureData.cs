@@ -13,6 +13,7 @@
             GetUserByLogin,
             MergeUser,
             GetUserType,
+            GetUserByEmail,
 
             //ADMINUSERS
             GetAdminUser,
