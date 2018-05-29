@@ -25,6 +25,7 @@ namespace SchooledAPI
             //USERS
             routes.MapHttpRoute("GetUser", "user/get", new { controller = "User", action = "Get" });
             routes.MapHttpRoute("GetUserByLogin", "user/getbylogin", new { controller = "User", action = "GetByLogin" });
+            routes.MapHttpRoute("GetUserByEmail", "user/getbyemail", new { controller = "User", action = "GetByEmail" });
             routes.MapHttpRoute("MergeUser", "user/merge", new { controller = "User", action = "Merge" });
             routes.MapHttpRoute("GetUserType", "user/getusertype", new { controller = "User", action = "GetUserType" });       
 

@@ -90,3 +90,4 @@ C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\obj\Debug\School
 C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\bin\BCrypt.Net.dll
 C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\bin\BCrypt.Net.xml
 C:\Users\jerun\Desktop\SchooledProjects\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.csprojResolveAssemblyReference.cache
+D:\Schooled\SchooledAPI2\SchooledAPI\SchooledAPI\obj\Debug\SchooledAPI.csprojResolveAssemblyReference.cache

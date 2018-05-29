@@ -79,6 +79,41 @@ namespace SchooledAPI.Controllers
         }
 
         /*
+         * .../user/getbyemail/ [HttpGet]
+         * Description: Get a specific user by their email
+         * Parameters: email (the email of the user) 
+         * Result: APIResponseData of the user object 
+         */
+        [HttpPost]
+        public APIResponseData GetByEmail(string email)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(email))
+                {
+                    using (var sql = new SqlData.Record<UserData>())
+                    {
+                        var parameters = new
+                        {
+                            Email = email
+                        };
+                        sql.Action = () => sql.Execute(SqlProcedureData.Procedures.GetUserByEmail, parameters);
+                        return new APIResponseData { status = "Success", description = JsonConvert.SerializeObject(sql.Run()) };
+                    }
+                }
+                else
+                {
+                    return new APIResponseData { status = "Failed", description = "Email and Password are required." };
+                }
+
+            }
+            catch (Exception err)
+            {
+                return new APIResponseData { status = "Failed", description = err.Message };
+            }
+        }
+
+        /*
          * .../user/merge/?userjson= [HttpPost]
          * Description: Pass an user object to either create or update a user based on the Row Key
          * Parameters: user (an user object)
