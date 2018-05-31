@@ -1,1 +1,7 @@
 packages/
+.vs/
+SchooledAPI/obj
+*.suo
+*.user
+bin/
+obj/
