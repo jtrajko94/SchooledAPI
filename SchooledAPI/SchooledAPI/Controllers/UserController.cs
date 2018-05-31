@@ -79,7 +79,7 @@ namespace SchooledAPI.Controllers
         }
 
         /*
-         * .../user/getbyemail/ [HttpGet]
+         * .../user/getbyemail/ [HttpPost]
          * Description: Get a specific user by their email
          * Parameters: email (the email of the user) 
          * Result: APIResponseData of the user object 

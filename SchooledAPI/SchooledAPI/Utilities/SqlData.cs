@@ -28,7 +28,7 @@ namespace SchooledAPI.Utilities
             public Action Action { get; set; }
             public void Execute(SqlProcedureData.Procedures proc, object parameters = null)
             {
-                SqlConnection.Execute(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters, commandTimeout: 200);
+                SqlConnection.Execute(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters, commandTimeout: 0);
             }
             public void Run()
             {
@@ -40,7 +40,7 @@ namespace SchooledAPI.Utilities
             public Func<T> Action { get; set; }
             public T Execute(SqlProcedureData.Procedures proc, object parameters = null)
             {
-                return SqlConnection.ExecuteScalar<T>(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters);
+                return SqlConnection.ExecuteScalar<T>(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters, commandTimeout: 0);
             }
             public T Run()
             {
@@ -52,7 +52,7 @@ namespace SchooledAPI.Utilities
             public Func<T> Action { get; set; }
             public T Execute(SqlProcedureData.Procedures proc, object parameters = null)
             {
-                return SqlConnection.Query<T>(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters).SingleOrDefault();
+                return SqlConnection.Query<T>(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters, commandTimeout: 0).SingleOrDefault();
             }
             public T Run()
             {
@@ -64,7 +64,7 @@ namespace SchooledAPI.Utilities
             public Func<List<T>> Action { get; set; }
             public List<T> Execute(SqlProcedureData.Procedures proc, object parameters = null)
             {
-                return SqlConnection.Query<T>(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters).ToList();
+                return SqlConnection.Query<T>(proc.ToString(), commandType: CommandType.StoredProcedure, param: parameters, commandTimeout: 0).ToList();
             }
             public List<T> Run()
             {
